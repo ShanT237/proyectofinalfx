@@ -13,25 +13,21 @@ public class LoginEmpleadoController {
         this.view = view;
     }
 
-    // Verificar si el empleado existe
     public boolean verificarEmpleadoCuenta(String nombreUsuario, String contraseña) {
         return sistemaConcesionario.verificarEmpleadoCuenta(nombreUsuario, contraseña);
     }
 
-    // Lógica para manejar el ingreso
     public void handleIngresar(String nombreUsuario, String password, Label labelError) {
         if (nombreUsuario.isEmpty() || password.isEmpty()) {
             labelError.setText("Por favor, ingrese todos los datos.");
         } else {
             if (verificarEmpleadoCuenta(nombreUsuario, password)) {
-                labelError.setText(""); // Limpiar mensaje de error
-                view.openSecondaryEmpleado(); // Abre la ventana secundaria
+                labelError.setText("");
+                view.openSecondaryEmpleado();
             } else {
                 labelError.setText("Credenciales incorrectas.");
             }
         }
     }
 
-
 }
-

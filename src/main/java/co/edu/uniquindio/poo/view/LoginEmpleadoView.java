@@ -34,37 +34,35 @@ public class LoginEmpleadoView {
 
     public void setApp(App app) {
         this.app = app;
-        this.sistemaConcesionario = app.getSistemaConcesionario(); // Asegúrate de obtener el sistemaConcesionario aquí
+        this.sistemaConcesionario = app.getSistemaConcesionario();
         this.controller = new LoginEmpleadoController(this.sistemaConcesionario, this);
 
-        // Oculta el label de error al inicio
         labelError.setVisible(false);
     }
 
-@FXML
-void handleIngresar(ActionEvent event) {
-    String nombreUsuario = fieldNombreUsuario.getText();
-    String password = fieldPassword.getText();
+    @FXML
+    void handleIngresar(ActionEvent event) {
+        String nombreUsuario = fieldNombreUsuario.getText();
+        String password = fieldPassword.getText();
 
-    // Ocultar el mensaje de error antes de validar
-    labelError.setVisible(false);
+        labelError.setVisible(false);
 
-    if (nombreUsuario.isEmpty() || password.isEmpty()) {
-        labelError.setText("Por favor, ingrese todos los datos.");
-        labelError.setVisible(true); // Muestra el mensaje de error
-    } else {
-        Empleado empleado = sistemaConcesionario.obtenerEmpleadoPorCredenciales(nombreUsuario, password);
-        if (empleado != null) {
-            app.setEmpleadoAutenticado(empleado);  // Guarda el empleado en la variable de App
-            openSecondaryEmpleado(); // Abre la vista secundaria
+        if (nombreUsuario.isEmpty() || password.isEmpty()) {
+            labelError.setText("Por favor, ingrese todos los datos.");
+            labelError.setVisible(true);
         } else {
-            labelError.setText("Empleado no encontrado.");
-            labelError.setVisible(true); // Muestra el mensaje de error
+            Empleado empleado = sistemaConcesionario.obtenerEmpleadoPorCredenciales(nombreUsuario, password);
+            if (empleado != null) {
+                app.setEmpleadoAutenticado(empleado);
+                openSecondaryEmpleado();
+            } else {
+                labelError.setText("Empleado no encontrado.");
+                labelError.setVisible(true);
+            }
         }
     }
-}
 
     public void openSecondaryEmpleado() {
-        app.openSecondaryEmpleadoView(); // Abrir la vista secundaria
+        app.openSecondaryEmpleadoView();
     }
 }

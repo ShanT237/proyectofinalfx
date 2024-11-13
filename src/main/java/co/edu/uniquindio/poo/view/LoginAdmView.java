@@ -37,8 +37,8 @@ public class LoginAdmView {
         } else {
             Administrador administrador = controller.verificarCredenciales(usuario, password);
             if (administrador != null) {
-                app.setAdministradorAutenticado(administrador); // Guarda el administrador autenticado en App
-                app.openLoginAdmView();  // Abre la vista principal del administrador
+                app.setAdministradorAutenticado(administrador); 
+                app.openLoginAdmView();  
             } else {
                 labelError.setText("Credenciales incorrectas.");
             }

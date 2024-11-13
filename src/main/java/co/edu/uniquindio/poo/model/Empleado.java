@@ -26,6 +26,7 @@ public class Empleado extends Persona implements IGestionar {
         sistemaConcesionario.agregarCliente(nuevoCliente);
         System.out.println("Cliente creado exitosamente.");
     }
+
     @Override
     public void crearVehiculo(String tipoVehiculo, Vehiculo vehiculo) {
 
@@ -33,7 +34,29 @@ public class Empleado extends Persona implements IGestionar {
         System.out.println("Vehículo " + vehiculo.getClass().getSimpleName() + " creado exitosamente");
     }
 
+    @Override
+    public void eliminarVehiculo(String matricula) {
+        for (Vehiculo vehiculo : sistemaConcesionario.getVehiculos()) {
+            if (vehiculo.getMatricula().equals(matricula)) {
+                sistemaConcesionario.getVehiculos().remove(vehiculo);
+                System.out.println("Vehículo Eliminado exitosamente");
+                return;
+            }
+        }
+        System.out.println("Vehículo no encontrado.");
+    }
 
+    @Override
+    public void eliminarCliente(String id) {
+        for (Cliente cliente : sistemaConcesionario.getClientes()) {
+            if (cliente.getId().equals(id)) {
+                sistemaConcesionario.getClientes().remove(cliente);
+                System.out.println("Cliente Eliminado exitosamente");
+                return;
+            }
+        }
+        System.out.println("Cliente no encontrado.");
+    }
 
     public String getPuesto() {
         return puesto;
@@ -66,6 +89,5 @@ public class Empleado extends Persona implements IGestionar {
     public void setSistemaConcesionario(SistemaConcesionario sistemaConcesionario) {
         this.sistemaConcesionario = sistemaConcesionario;
     }
-
 
 }

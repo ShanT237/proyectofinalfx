@@ -116,5 +116,11 @@ public abstract class Vehiculo {
     public void setRevisionTecnica(RevisionTecnica revisionTecnica) {
         this.revisionTecnica = revisionTecnica;
     }
+    public String getMatricula() {
+        return matricula;
+    }
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
 
 }

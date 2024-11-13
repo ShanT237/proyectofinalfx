@@ -5,7 +5,7 @@ import co.edu.uniquindio.poo.model.SistemaConcesionario;
 import co.edu.uniquindio.poo.view.LoginAdmView;
 
 public class LoginAdmController {
-    
+
     private SistemaConcesionario sistemaConcesionario;
     private LoginAdmView view;
 
@@ -14,10 +14,9 @@ public class LoginAdmController {
         this.view = view;
     }
 
-    // Devuelve el objeto Administrador autenticado, o null si las credenciales son incorrectas
     public Administrador verificarCredenciales(String usuario, String password) {
         if (sistemaConcesionario.verificarAdministradorCuenta(usuario, password)) {
-            return sistemaConcesionario.obtenerAdministradorPorCredenciales(usuario, password); // Supongamos que este método obtiene el administrador
+            return sistemaConcesionario.obtenerAdministradorPorCredenciales(usuario, password);
         }
         return null;
     }

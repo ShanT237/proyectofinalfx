@@ -23,6 +23,9 @@ public class SistemaConcesionario {
         empleados = new LinkedList<>();
         reportes = new LinkedList<>();
         this.registro = registro;
+
+        this.administrador.setSistemaConcesionario(this);
+
     }
 
     /*
@@ -32,9 +35,9 @@ public class SistemaConcesionario {
     public Administrador obtenerAdministradorPorCredenciales(String usuario, String password) {
         if (administrador != null && administrador.getNombreDeUsuario().equals(usuario)
                 && administrador.getContraseña().equals(password)) {
-            return administrador; // Devuelve el objeto Administrador si coincide
+            return administrador;
         }
-        return null; // Devuelve null si no se encuentra
+        return null;
     }
 
     public boolean verificarAdministradorCuenta(String usuario, String password) {
@@ -45,10 +48,10 @@ public class SistemaConcesionario {
     public Empleado obtenerEmpleadoPorCredenciales(String usuario, String password) {
         for (Empleado empleado : empleados) {
             if (empleado.getNombreDeUsuario().equals(usuario) && empleado.getContraseña().equals(password)) {
-                return empleado; // Devuelve el objeto Empleado si coincide
+                return empleado;
             }
         }
-        return null; // Devuelve null si no se encuentra
+        return null;
     }
 
     public void agregarVehiculo(Vehiculo vehiculoParam) {
@@ -106,10 +109,10 @@ public class SistemaConcesionario {
         for (Empleado empleado : empleados) {
             if (empleado.getNombreDeUsuario().equals(nombreUsuario) &&
                     empleado.getContraseña().equals(contraseña)) {
-                return true; // El empleado existe
+                return true;
             }
         }
-        return false; // El empleado no existe
+        return false;
     }
 
     public void agregarReporte(Reporte reporte) {

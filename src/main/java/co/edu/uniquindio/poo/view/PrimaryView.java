@@ -23,9 +23,9 @@ public class PrimaryView {
     @FXML
     void handleButtonAction(ActionEvent event) {
         if (event.getSource() == buttonAdministrador) {
-            app.openLoginAdmView(); // Abrir ventana de administrador
+            app.openLoginAdmView(); 
         } else if (event.getSource() == buttonEmpleado) {
-            app.openLoginEmpleadoView(); // Abrir ventana de empleado
+            app.openLoginEmpleadoView(); 
         }
     }
 
