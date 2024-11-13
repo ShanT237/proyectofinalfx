@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #26282D;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.view.PrimaryView">
+   <children>
+      <Button fx:id="buttonAdministrador" layoutX="305.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #38abbe;" text="Login Administrador" textFill="#ffdfdf" />
+      <Button fx:id="buttonEmpleado" layoutX="63.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="70.0" prefWidth="130.0" style="-fx-background-color: #38abbe;" text="Login Empleado" textFill="#ffe1e1" />
+      <Text layoutX="289.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fill="WHITE" layoutX="65.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa Concesionario">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>
