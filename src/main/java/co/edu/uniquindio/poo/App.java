@@ -65,7 +65,7 @@ public class App extends Application {
         RegistroTransacciones registro = new RegistroTransacciones(LocalDate.now());
 
         Administrador adm1 = new Administrador(
-            "Santiago", "007", "Shant", "password123", "Squirrel77",
+            "Santiago", "007", "Shant", "pass007", "Squirrel77",
             "shant.com", "3201234567"
         );
 
@@ -126,6 +126,7 @@ public class App extends Application {
      */
     private void openPrimaryView() {
         try {
+            primaryStage.setResizable(false);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("Primary.fxml"));
             Scene scene = new Scene(loader.load());
@@ -135,6 +136,7 @@ public class App extends Application {
 
             primaryStage.setScene(scene);
             primaryStage.show();
+    
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -162,6 +164,7 @@ public class App extends Application {
      * No Modificar
      */
     public void openLoginEmpleadoView() {
+        primaryStage.setResizable(false);
         primaryStage.close();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginEmpleado.fxml"));
