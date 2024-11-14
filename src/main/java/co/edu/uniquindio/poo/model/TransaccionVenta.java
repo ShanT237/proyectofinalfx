@@ -47,9 +47,9 @@ public class TransaccionVenta implements ITransaccion {
             vehiculo.setDisponible(true);
             this.monto = calcularMontoVenta();
 
-            sistema.agregarVehiculo(vehiculo);
-            sistema.getRegistro().registrarTransaccion(this);
-            empleado.getTransacciones().add(this);
+            this.sistema.agregarVehiculo(vehiculo);
+            this.sistema.getRegistro().registrarTransaccion(this);
+            this.empleado.getTransacciones().add(this);
 
             System.out.println("Transacción de venta procesada exitosamente para el vehículo: "
                     + vehiculo.getMarca() + " (" + vehiculo.getModelo() + ")");
@@ -61,6 +61,12 @@ public class TransaccionVenta implements ITransaccion {
     @Override
     public String getDetalles() {
         return codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "TransaccionVenta [codigo=" + codigo + ", cliente=" + cliente + ", empleado=" + empleado + ", vehiculo="
+                + vehiculo + ", fechaVenta=" + fechaVenta + ", monto=" + monto + ", sistema=" + sistema + "]";
     }
 
     @Override
@@ -128,5 +134,10 @@ public class TransaccionVenta implements ITransaccion {
     public void setMonto(double monto) {
         this.monto = monto;
     }
+
+    public ITransaccion geTransaccion(){
+        return this;
+    }
+    
 
 }

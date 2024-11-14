@@ -32,8 +32,22 @@ public class Empleado extends Persona implements IGestionar {
         System.out.println("Cliente creado exitosamente.");
     }
 
+    public void actualizarCliente(Cliente cliente) {
+        for (Cliente c : sistemaConcesionario.getClientes()) {
+            if (c.getId().equals(cliente.getId())) {
+                c.setNombre(cliente.getNombre());
+                c.setDireccion(cliente.getDireccion());
+                c.setEmail(cliente.getEmail());
+                c.setTelefono(cliente.getTelefono());
+                System.out.println("Cliente actualizado exitosamente.");
+                return;  
+            }
+        }
+        System.out.println("Cliente no encontrado.");
+    }
+
     @Override
-    public void crearVehiculo(String tipoVehiculo, Vehiculo vehiculo) {
+    public void crearVehiculo(Vehiculo vehiculo) {
 
         sistemaConcesionario.getVehiculos().add(vehiculo);
         System.out.println("Vehículo " + vehiculo.getClass().getSimpleName() + " creado exitosamente");
@@ -62,6 +76,7 @@ public class Empleado extends Persona implements IGestionar {
         }
         System.out.println("Cliente no encontrado.");
     }
+
 
     public String getPuesto() {
         return puesto;

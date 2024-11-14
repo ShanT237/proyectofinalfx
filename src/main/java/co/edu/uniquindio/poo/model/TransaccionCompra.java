@@ -17,6 +17,11 @@ public class TransaccionCompra implements ITransaccion {
     private SistemaConcesionario sistema;
 
     
+    @Override
+    public String toString() {
+        return "TransaccionCompra [codigo=" + codigo + ", cliente=" + cliente + ", empleado=" + empleado + ", vehiculo="
+                + vehiculo + ", fechaCompra=" + fechaCompra + ", monto=" + monto + ", sistema=" + sistema + "]";
+    }
     public TransaccionCompra(String codigo) {
         this.codigo = codigo;
         this.monto = calcularMontoCompra();
@@ -32,9 +37,9 @@ public class TransaccionCompra implements ITransaccion {
             vehiculo.setDisponible(false); 
             this.monto = calcularMontoCompra(); 
 
-            cliente.vehiculoAdquirido(vehiculo);
-            sistema.getRegistro().registrarTransaccion(this);
-            empleado.getTransacciones().add(this);
+            this.cliente.vehiculoAdquirido(vehiculo);
+            this.sistema.getRegistro().registrarTransaccion(this);
+            this.empleado.getTransacciones().add(this);
 
             System.out.println("Transacción de compra procesada exitosamente para el vehículo: " 
                                + vehiculo.getMarca() + " (" + vehiculo.getModelo() + ")");
@@ -124,7 +129,9 @@ public class TransaccionCompra implements ITransaccion {
         this.sistema = sistema;
     }
 
-    
+    public ITransaccion geTransaccion(){
+        return this;
+    }
     
     
 }

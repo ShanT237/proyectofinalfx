@@ -18,7 +18,7 @@ public interface ITransaccion {
     public void procesar(SistemaConcesionario sitema, Cliente cliente, Vehiculo vehiculo, Empleado empleado);
 
     /**
-     * @return Detalles de la transacción.
+     * @return Detalles de la transacción(Codigo).
      */
     public String getDetalles();
 
@@ -36,4 +36,10 @@ public interface ITransaccion {
      * @return Empleado que procesó la transacción.
      */
     public Empleado getEmpleado();
+
+    public ITransaccion geTransaccion();
+
+    public Cliente getCliente();
+
+    public Vehiculo getVehiculo();
 }

@@ -12,17 +12,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginEmpleadoView {
-    
+
     /*
-     * Atributos de la clase
+     * Atributos de la clase y FXML
      */
     private App app;
     private LoginEmpleadoController controller;
-    private SistemaConcesionario sistemaConcesionario;
-
-    public void setSistemaConcesionario(SistemaConcesionario sistemaConcesionario) {
-        this.sistemaConcesionario = sistemaConcesionario;
-    }
 
     @FXML
     private Button buttonIngresar;
@@ -35,15 +30,17 @@ public class LoginEmpleadoView {
 
     @FXML
     private Label labelError;
-
+    
+    /*
+     * Metodo App que conceta las clases entre si
+     */
     public void setApp(App app) {
         this.app = app;
-        this.sistemaConcesionario = app.getSistemaConcesionario();
-        this.controller = new LoginEmpleadoController(this.sistemaConcesionario, this);
+        this.controller = new LoginEmpleadoController(this.app.getSistemaConcesionario(), this);
 
         labelError.setVisible(false);
     }
-    
+
     /*
      * Metodo que maneja las acciones del boton ingresar
      */
@@ -58,7 +55,8 @@ public class LoginEmpleadoView {
             labelError.setText("Por favor, ingrese todos los datos.");
             labelError.setVisible(true);
         } else {
-            Empleado empleado = sistemaConcesionario.obtenerEmpleadoPorCredenciales(nombreUsuario, password);
+            Empleado empleado = controller.getSistemaConcesionario().obtenerEmpleadoPorCredenciales(nombreUsuario,
+                    password);
             if (empleado != null) {
                 app.setEmpleadoAutenticado(empleado);
                 openSecondaryEmpleado();

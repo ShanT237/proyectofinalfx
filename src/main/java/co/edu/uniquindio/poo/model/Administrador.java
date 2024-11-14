@@ -77,7 +77,7 @@ public class Administrador extends Persona implements IGestionar {
      * @param vehiculo     El objeto Vehiculo que se va a añadir.
      */
     @Override
-    public void crearVehiculo(String tipoVehiculo, Vehiculo vehiculo) {
+    public void crearVehiculo(Vehiculo vehiculo) {
         sistemaConcesionario.getVehiculos().add(vehiculo);
         System.out.println("Vehículo " + vehiculo.getClass().getSimpleName() + " creado exitosamente");
     }

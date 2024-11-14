@@ -30,4 +30,20 @@ public class LoginEmpleadoController {
         }
     }
 
+    public SistemaConcesionario getSistemaConcesionario() {
+        return sistemaConcesionario;
+    }
+
+    public void setSistemaConcesionario(SistemaConcesionario sistemaConcesionario) {
+        this.sistemaConcesionario = sistemaConcesionario;
+    }
+
+    public LoginEmpleadoView getView() {
+        return view;
+    }
+
+    public void setView(LoginEmpleadoView view) {
+        this.view = view;
+    }
+
 }

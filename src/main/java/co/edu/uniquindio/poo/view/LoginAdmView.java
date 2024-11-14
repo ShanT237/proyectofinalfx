@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 public class LoginAdmView {
     /*
-     * Atributos
+     * Atributos y FXML
      */
     private App app;
     private LoginAdmController controller;
@@ -26,16 +26,29 @@ public class LoginAdmView {
     @FXML
     private TextField usuarioField;
 
+    /**
+     * Establece el contexto de la aplicación para la vista `LoginAdmView`.
+     * 
+     * @param app La instancia principal de la aplicación de tipo `App`.
+     * 
+     *            Este método inicializa el `LoginAdmController` con el sistema
+     *            concesionario
+     *            obtenido de la instancia `App` y la vista actual (`this`). También
+     *            asegura
+     *            que la etiqueta de error (`labelError`) esté inicialmente oculta
+     *            al establecer
+     *            su visibilidad en falso.
+     */
     public void setApp(App app) {
         this.app = app;
         this.controller = new LoginAdmController(app.getSistemaConcesionario(), this);
         labelError.setVisible(false);
     }
-  
+
     /*
      * Acciones de boton ingresar
      */
- @FXML
+    @FXML
     void handleIngresar(ActionEvent event) {
         String usuario = usuarioField.getText();
         String password = passwordField.getText();
@@ -47,8 +60,8 @@ public class LoginAdmView {
         } else {
             Administrador administrador = controller.verificarCredenciales(usuario, password);
             if (administrador != null) {
-                app.setAdministradorAutenticado(administrador); 
-                app.openSecondaryAdmView(); 
+                app.setAdministradorAutenticado(administrador);
+                app.openSecondaryAdmView();
             } else {
                 labelError.setText("Credenciales incorrectas.");
                 labelError.setVisible(true);

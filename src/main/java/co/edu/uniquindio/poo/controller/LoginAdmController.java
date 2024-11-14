@@ -20,4 +20,20 @@ public class LoginAdmController {
         }
         return null;
     }
+
+    public SistemaConcesionario getSistemaConcesionario() {
+        return sistemaConcesionario;
+    }
+
+    public void setSistemaConcesionario(SistemaConcesionario sistemaConcesionario) {
+        this.sistemaConcesionario = sistemaConcesionario;
+    }
+
+    public LoginAdmView getView() {
+        return view;
+    }
+
+    public void setView(LoginAdmView view) {
+        this.view = view;
+    }
 }

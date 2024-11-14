@@ -60,8 +60,26 @@ public class SistemaConcesionario {
     }
 
     public void agregarVehiculo(Vehiculo vehiculoParam) {
-        vehiculos.add(vehiculoParam);
+        if (verificarVehiculo(vehiculoParam)) {
+            System.out.println("El cliente no se puede agregar porque ya existe");
 
+        } else {
+            vehiculos.add(vehiculoParam);
+        }
+
+    }
+
+    public boolean verificarVehiculo(Vehiculo vehiculo) {
+        boolean centinela = false;
+        for (Vehiculo c : vehiculos) {
+            if (c.getMatricula().equals(vehiculo.getMatricula())) {
+                centinela = true;
+                break;
+
+            }
+
+        }
+        return centinela;
     }
 
     public void agregarCliente(Cliente cliente) {

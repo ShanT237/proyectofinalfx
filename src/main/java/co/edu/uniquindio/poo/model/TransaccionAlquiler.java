@@ -25,6 +25,13 @@ public class TransaccionAlquiler implements ITransaccion {
     }
     
     @Override
+    public String toString() {
+        return "TransaccionAlquiler [codigo=" + codigo + ", cliente=" + cliente + ", empleado=" + empleado
+                + ", vehiculo=" + vehiculo + ", fechaAlquiler=" + fechaAlquiler + ", fechaDevolucion=" + fechaDevolucion
+                + ", monto=" + monto + ", dias=" + dias + ", sistema=" + sistema + "]";
+    }
+
+    @Override
     public void procesar(SistemaConcesionario sistema, Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
         setSistema(sistema);
         if (vehiculo.isDisponible()) {
@@ -37,8 +44,8 @@ public class TransaccionAlquiler implements ITransaccion {
             this.monto = calcularMontoAlquiler(); 
 
 
-            sistema.getRegistro().registrarTransaccion(this);
-            empleado.getTransacciones().add(this);
+            this.sistema.getRegistro().registrarTransaccion(this);
+            this.empleado.getTransacciones().add(this);
 
             System.out.println("Transacción de alquiler procesada exitosamente para el vehículo: " 
                                + vehiculo.getMarca() + " (" + vehiculo.getModelo() + ")");
@@ -132,6 +139,9 @@ public class TransaccionAlquiler implements ITransaccion {
         this.monto = monto;
     }
 
+    public ITransaccion geTransaccion(){
+        return this;
+    }
     
     
 }
