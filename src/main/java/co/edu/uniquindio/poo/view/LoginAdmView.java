@@ -27,21 +27,25 @@ public class LoginAdmView {
     public void setApp(App app) {
         this.app = app;
         this.controller = new LoginAdmController(app.getSistemaConcesionario(), this);
+        labelError.setVisible(false);
     }
  @FXML
     void handleIngresar(ActionEvent event) {
         String usuario = usuarioField.getText();
         String password = passwordField.getText();
+        labelError.setVisible(false);
 
         if (usuario.isEmpty() || password.isEmpty()) {
             labelError.setText("Por favor, ingrese todos los datos.");
+            labelError.setVisible(true);
         } else {
             Administrador administrador = controller.verificarCredenciales(usuario, password);
             if (administrador != null) {
                 app.setAdministradorAutenticado(administrador); 
-                app.openLoginAdmView();  
+                app.openSecondaryAdmView(); 
             } else {
                 labelError.setText("Credenciales incorrectas.");
+                labelError.setVisible(true);
             }
         }
     }

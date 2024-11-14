@@ -12,22 +12,23 @@ public class TransaccionVenta implements ITransaccion {
     private double monto;
     private SistemaConcesionario sistema;
 
-    public TransaccionVenta(String codigo, Cliente cliente, Empleado empleado, Vehiculo vehiculo, LocalDate fechaVenta,
-            double monto) {
+    public TransaccionVenta(String codigo) {
         this.codigo = codigo;
-        this.cliente = cliente;
-        this.empleado = empleado;
-        this.vehiculo = vehiculo;
-        this.fechaVenta = fechaVenta;
         monto = calcularMontoVenta();
     }
+
     @Override
     public void procesar(Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
         if (vehiculo.isDisponible()) {
+            setFechaVenta(LocalDate.now());
+            setCliente(cliente);
+            setEmpleado(empleado);
+            setVehiculo(vehiculo);
             vehiculo.setDisponible(false);
             this.monto = calcularMontoVenta();
 
-            sistema.getRegistro().getTransacciones().add(this);
+            sistema.getRegistro().registrarTransaccion(this);
+            empleado.getTransacciones().add(this);
 
             System.out.println("Transacción de venta procesada exitosamente para el vehículo: "
                     + vehiculo.getMarca() + " (" + vehiculo.getModelo() + ")");
@@ -35,12 +36,12 @@ public class TransaccionVenta implements ITransaccion {
             System.out.println("El vehículo no está disponible para la venta.");
         }
     }
-    
+
     @Override
     public String getDetalles() {
         return codigo;
     }
-    
+
     @Override
     public String getTipo() {
         return getClass().getSimpleName();

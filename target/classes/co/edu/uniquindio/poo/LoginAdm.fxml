@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -14,6 +16,9 @@
          <font>
             <Font size="24.0" />
          </font>
+         <effect>
+            <Glow />
+         </effect>
       </Text>
       <Text fill="WHITE" layoutX="96.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOMBRE DE USUARIO" />
       <Text fill="WHITE" layoutX="95.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTRASEÑA" />
@@ -22,6 +27,12 @@
          <font>
             <Font size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
       </Button>
       <Button fx:id="recoverPassword" layoutX="181.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleIngresar" style="-fx-background-color: #26282D;" text="Olvide mi contraseña" textFill="#86c7d9" />
       <Label fx:id="labelError" alignment="TOP_CENTER" layoutX="145.0" layoutY="261.0" prefHeight="17.0" prefWidth="200.0" text="Label" textFill="#dd2121" />

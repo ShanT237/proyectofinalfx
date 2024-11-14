@@ -24,6 +24,7 @@ import co.edu.uniquindio.poo.model.Vehiculo;
 import co.edu.uniquindio.poo.view.LoginAdmView;
 import co.edu.uniquindio.poo.view.LoginEmpleadoView;
 import co.edu.uniquindio.poo.view.PrimaryView;
+import co.edu.uniquindio.poo.view.SecondaryAdmView;
 import co.edu.uniquindio.poo.view.SecondaryEmpleadoView;
 
 public class App extends Application {
@@ -65,33 +66,40 @@ public class App extends Application {
         RegistroTransacciones registro = new RegistroTransacciones(LocalDate.now());
 
         Administrador adm1 = new Administrador(
-            "Santiago", "007", "Shant", "pass007", "Squirrel77",
-            "shant.com", "3201234567"
-        );
+                "Santiago", "007", "Shant", "pass007", "Squirrel77",
+                "shant.com", "3201234567");
 
         // Crear empleados
-        Empleado empleado1 = new Empleado("Santiago Torres", "007", "Shant", "pass007", "Sparrot", "shant.com", "Gerente", "3101112233");
-        Empleado empleado2 = new Empleado("Ana Lopez", "E002", "anaL", "pass002", "sol", "ana.lopez@tuCarroUQ.com", "Compras", "3102223344");
-        Empleado empleado3 = new Empleado("Luis Martinez", "E003", "luisM", "pass003", "mar", "luis.martinez@tuCarroUQ.com", "Alquiler", "3103334455");
-        Empleado empleado4 = new Empleado("Maria Rodriguez", "E004", "mariaR", "pass004", "luna", "maria.rodriguez@tuCarroUQ.com", "Ventas", "3104445566");
-        Empleado empleado5 = new Empleado("Pedro Sanchez", "E005", "pedroS", "pass005", "estrella", "pedro.sanchez@tuCarroUQ.com", "Compras", "3105556677");
-        Empleado empleado6 = new Empleado("Laura Castro", "E006", "lauraC", "pass006", "nube", "laura.castro@tuCarroUQ.com", "Alquiler", "3106667788");
-        Empleado empleado7 = new Empleado("Jose Torres", "E007", "joseT", "pass007", "rio", "jose.torres@tuCarroUQ.com", "Ventas", "3107778899");
+        Empleado empleado1 = new Empleado("Santiago Torres", "007", "Shant", "pass007", "Sparrot", "shant.com",
+                "Gerente", "3101112233");
+        Empleado empleado2 = new Empleado("Ana Lopez", "E002", "anaL", "pass002", "sol", "ana.lopez@tuCarroUQ.com",
+                "Compras", "3102223344");
+        Empleado empleado3 = new Empleado("Luis Martinez", "E003", "luisM", "pass003", "mar",
+                "luis.martinez@tuCarroUQ.com", "Alquiler", "3103334455");
+        Empleado empleado4 = new Empleado("Maria Rodriguez", "E004", "mariaR", "pass004", "luna",
+                "maria.rodriguez@tuCarroUQ.com", "Ventas", "3104445566");
+        Empleado empleado5 = new Empleado("Pedro Sanchez", "E005", "pedroS", "pass005", "estrella",
+                "pedro.sanchez@tuCarroUQ.com", "Compras", "3105556677");
+        Empleado empleado6 = new Empleado("Laura Castro", "E006", "lauraC", "pass006", "nube",
+                "laura.castro@tuCarroUQ.com", "Alquiler", "3106667788");
+        Empleado empleado7 = new Empleado("Jose Torres", "E007", "joseT", "pass007", "rio", "jose.torres@tuCarroUQ.com",
+                "Ventas", "3107778899");
 
         // Crear clientes
-        Cliente cliente1 = new Cliente("Andrea Diaz", "C001", "andreaD", "clientpass1", "flor", "andrea.diaz@gmail.com", "Calle 123 #45-67", "3201112233");
-        Cliente cliente2 = new Cliente("Daniel Rios", "C002", "danielR", "clientpass2", "montaña", "daniel.rios@gmail.com", "Carrera 98 #10-20", "3202223344");
-        Cliente cliente3 = new Cliente("Sofia Morales", "C003", "sofiaM", "clientpass3", "paz", "sofia.morales@gmail.com", "Avenida 50 #5-45", "3203334455");
-        Cliente cliente4 = new Cliente("Ricardo Pardo", "C004", "ricardoP", "clientpass4", "cielo", "ricardo.pardo@gmail.com", "Calle 74 #9-21", "3204445566");
-        Cliente cliente5 = new Cliente("Elena Vargas", "C005", "elenaV", "clientpass5", "estrella", "elena.vargas@gmail.com", "Carrera 80 #15-30", "3205556677");
-
-       
+        Cliente cliente1 = new Cliente("Andrea Diaz", "C001", "andreaD", "clientpass1", "flor", "andrea.diaz@gmail.com",
+                "Calle 123 #45-67", "3201112233");
+        Cliente cliente2 = new Cliente("Daniel Rios", "C002", "danielR", "clientpass2", "montaña",
+                "daniel.rios@gmail.com", "Carrera 98 #10-20", "3202223344");
+        Cliente cliente3 = new Cliente("Sofia Morales", "C003", "sofiaM", "clientpass3", "paz",
+                "sofia.morales@gmail.com", "Avenida 50 #5-45", "3203334455");
+        Cliente cliente4 = new Cliente("Ricardo Pardo", "C004", "ricardoP", "clientpass4", "cielo",
+                "ricardo.pardo@gmail.com", "Calle 74 #9-21", "3204445566");
+        Cliente cliente5 = new Cliente("Elena Vargas", "C005", "elenaV", "clientpass5", "estrella",
+                "elena.vargas@gmail.com", "Carrera 80 #15-30", "3205556677");
 
         sistemaConcesionario = new SistemaConcesionario("Concesionario de Ejemplo", adm1, registro);
         sistemaConcesionario.agregarEmpleado(empleado1);
         sistemaConcesionario.agregarEmpleado(empleado2);
-
-      
 
         sistemaConcesionario.agregarCliente(cliente1);
         sistemaConcesionario.agregarCliente(cliente2);
@@ -99,7 +107,7 @@ public class App extends Application {
         sistemaConcesionario.agregarCliente(cliente4);
         sistemaConcesionario.agregarCliente(cliente5);
 
-        Moto moto1 = new Moto("Yamaha", "MT-07", "KLJ-233",  6, 220.0, 689.0,
+        Moto moto1 = new Moto("Yamaha", "MT-07", "KLJ-233", 6, 220.0, 689.0,
                 EnumTransmision.MANUAL, true, 8000.0, 17.0, 5.5, EnumCombustible.GASOLINA);
 
         Moto moto2 = new Moto("Honda", "CBR500R", "PLM-073", 6, 180.0, 471.0,
@@ -108,15 +116,14 @@ public class App extends Application {
         sistemaConcesionario.agregarVehiculo(moto1);
         sistemaConcesionario.agregarVehiculo(moto2);
 
-        TransaccionAlquiler alquiler = new TransaccionAlquiler("ALQ001", cliente1, empleado1, moto1, LocalDate.now(),
-                LocalDate.now().plusDays(7));
-        TransaccionCompra compra = new TransaccionCompra("CMP001", cliente2, empleado2, moto2, LocalDate.now(),
-                25000.0);
-        TransaccionVenta venta = new TransaccionVenta("VTA001", cliente1, empleado2, moto1, LocalDate.now(), 23000.0);
+        TransaccionAlquiler alquiler = new TransaccionAlquiler("ALQ001", 20);
+        TransaccionCompra compra = new TransaccionCompra("CMP001");
+        TransaccionVenta venta = new TransaccionVenta("VTA001");
 
-        registro.registrarTransaccion(alquiler);
-        registro.registrarTransaccion(compra);
-        registro.registrarTransaccion(venta);
+        alquiler.procesar(cliente3, moto2, empleado7);
+        
+        venta.procesar(cliente2, moto2, empleado3);
+        
 
         openPrimaryView();
     }
@@ -136,7 +143,7 @@ public class App extends Application {
 
             primaryStage.setScene(scene);
             primaryStage.show();
-    
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -146,6 +153,7 @@ public class App extends Application {
      * No Modificar
      */
     public void openSecondaryEmpleadoView() {
+        primaryStage.setResizable(true);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("SecondaryEmpleado.fxml"));
             Scene scene = new Scene(loader.load());
@@ -191,6 +199,26 @@ public class App extends Application {
 
             LoginAdmView loginAdmView = loader.getController();
             loginAdmView.setApp(this);
+
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+
+    /*
+     * No Modificar
+     */
+    public void openSecondaryAdmView() {
+        primaryStage.setResizable(true); 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SecondaryAdm.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            
+            SecondaryAdmView secondaryAdmView = loader.getController();
 
             primaryStage.setScene(scene);
             primaryStage.show();

@@ -11,27 +11,28 @@ public class TransaccionAlquiler implements ITransaccion {
     private LocalDate fechaAlquiler;
     private LocalDate fechaDevolucion;
     private double monto;
+    private int dias;
     private SistemaConcesionario sistema;
     
-    public TransaccionAlquiler(String codigo, Cliente cliente, Empleado empleado, Vehiculo vehiculo,
-            LocalDate fechaAlquiler, LocalDate fechaDevolucion) {
+    public TransaccionAlquiler(String codigo, int dias) {
         this.codigo = codigo;
-        this.cliente = cliente;
-        this.empleado = empleado;
-        this.vehiculo = vehiculo;
-        this.fechaAlquiler = fechaAlquiler;
-        this.fechaDevolucion = fechaDevolucion;
         monto = calcularMontoAlquiler();
     }
     
     @Override
     public void procesar(Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
         if (vehiculo.isDisponible()) {
+            setCliente(cliente);
+            setEmpleado(empleado);
+            setVehiculo(vehiculo);
+            setFechaAlquiler(LocalDate.now());
+            setFechaAlquiler(LocalDate.now().plusDays(dias));
             vehiculo.setDisponible(false); 
             this.monto = calcularMontoAlquiler(); 
 
             
-            sistema.getRegistro().getTransacciones().add(this);
+            sistema.getRegistro().registrarTransaccion(this);
+            empleado.getTransacciones().add(this);
 
             System.out.println("Transacción de alquiler procesada exitosamente para el vehículo: " 
                                + vehiculo.getMarca() + " (" + vehiculo.getModelo() + ")");

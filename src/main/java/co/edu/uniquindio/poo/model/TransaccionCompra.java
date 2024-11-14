@@ -12,23 +12,23 @@ public class TransaccionCompra implements ITransaccion {
     private SistemaConcesionario sistema;
 
     
-    public TransaccionCompra(String codigo, Cliente cliente, Empleado empleado, Vehiculo vehiculo,
-            LocalDate fechaCompra, double monto) {
+    public TransaccionCompra(String codigo) {
         this.codigo = codigo;
-        this.cliente = cliente;
-        this.empleado = empleado;
-        this.vehiculo = vehiculo;
-        this.fechaCompra = fechaCompra;
         this.monto = calcularMontoCompra();
     }
     @Override 
     public void procesar(Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
         if (vehiculo.pasaRevisionTecnica()) { 
+            setCliente(cliente);
+            setEmpleado(empleado);
+            setVehiculo(vehiculo);
+            setFechaCompra(LocalDate.now());
             vehiculo.setDisponible(true); 
             this.monto = calcularMontoCompra(); 
 
             
-            sistema.getRegistro().getTransacciones().add(this);
+            sistema.getRegistro().registrarTransaccion(this);
+            empleado.getTransacciones().add(this);
 
             System.out.println("Transacción de compra procesada exitosamente para el vehículo: " 
                                + vehiculo.getMarca() + " (" + vehiculo.getModelo() + ")");

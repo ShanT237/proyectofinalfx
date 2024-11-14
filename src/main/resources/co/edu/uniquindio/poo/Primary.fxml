@@ -11,8 +11,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: #26282D;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.view.PrimaryView">
    <children>
-      <Button fx:id="buttonAdministrador" layoutX="226.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: #38abbe;" text="Login Administrador" textFill="#ffdfdf" />
-      <Button fx:id="buttonEmpleado" layoutX="53.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: #38abbe;" text="Login Empleados" textFill="#ffe1e1" />
+      <Button fx:id="buttonAdministrador" layoutX="217.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="150.0" style="-fx-background-color: #38abbe;" text="Login Administrador" textFill="#ffdfdf" />
+      <Button fx:id="buttonEmpleado" layoutX="44.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="150.0" style="-fx-background-color: #38abbe;" text="Login Empleados" textFill="#ffe1e1" />
       <Text layoutX="289.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <Text fill="WHITE" layoutX="77.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa Concesionario">
          <font>
