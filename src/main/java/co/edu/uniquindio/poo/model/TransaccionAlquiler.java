@@ -1,7 +1,12 @@
 package co.edu.uniquindio.poo.model;
 
 import java.time.LocalDate;
-
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public class TransaccionAlquiler implements ITransaccion {
 
     private String codigo;
@@ -20,7 +25,8 @@ public class TransaccionAlquiler implements ITransaccion {
     }
     
     @Override
-    public void procesar(Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
+    public void procesar(SistemaConcesionario sistema, Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
+        setSistema(sistema);
         if (vehiculo.isDisponible()) {
             setCliente(cliente);
             setEmpleado(empleado);
@@ -30,7 +36,7 @@ public class TransaccionAlquiler implements ITransaccion {
             vehiculo.setDisponible(false); 
             this.monto = calcularMontoAlquiler(); 
 
-            
+
             sistema.getRegistro().registrarTransaccion(this);
             empleado.getTransacciones().add(this);
 
@@ -56,6 +62,22 @@ public class TransaccionAlquiler implements ITransaccion {
 
     public String getCodigo() {
         return codigo;
+    }
+
+    public int getDias() {
+        return dias;
+    }
+
+    public void setDias(int dias) {
+        this.dias = dias;
+    }
+
+    public SistemaConcesionario getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(SistemaConcesionario sistema) {
+        this.sistema = sistema;
     }
 
     public void setCodigo(String codigo) {

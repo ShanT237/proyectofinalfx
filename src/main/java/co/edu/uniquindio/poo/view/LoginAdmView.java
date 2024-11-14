@@ -11,7 +11,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginAdmView {
-
+    /*
+     * Atributos
+     */
     private App app;
     private LoginAdmController controller;
 
@@ -29,6 +31,10 @@ public class LoginAdmView {
         this.controller = new LoginAdmController(app.getSistemaConcesionario(), this);
         labelError.setVisible(false);
     }
+  
+    /*
+     * Acciones de boton ingresar
+     */
  @FXML
     void handleIngresar(ActionEvent event) {
         String usuario = usuarioField.getText();

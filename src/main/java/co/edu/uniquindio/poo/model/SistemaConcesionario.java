@@ -2,7 +2,12 @@ package co.edu.uniquindio.poo.model;
 
 import java.util.LinkedList;
 import java.util.List;
-
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public class SistemaConcesionario {
     private String nombre;
     private Administrador administrador;

@@ -1,5 +1,11 @@
 package co.edu.uniquindio.poo.model;
 
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public class Administrador extends Persona implements IGestionar {
     private String telefono;
     private SistemaConcesionario sistemaConcesionario;
@@ -9,48 +15,72 @@ public class Administrador extends Persona implements IGestionar {
         super(nombre, id, nombreDeUsuario, contraseña, palabraSecreta, email);
         this.telefono = telefono;
     }
+    
 
+    
     @Override
     public void eliminarVehiculo(String matricula) {
         for (Vehiculo vehiculo : sistemaConcesionario.getVehiculos()) {
             if (vehiculo.getMatricula().equals(matricula)) {
                 sistemaConcesionario.getVehiculos().remove(vehiculo);
                 System.out.println("Vehículo Eliminado exitosamente");
-                return;  
+                return;
             }
         }
         System.out.println("Vehículo no encontrado.");
     }
 
+    /**
+     * Elimina un cliente del sistema del concesionario basado en su identificador
+     * único.
+     *
+     * @param id El identificador único del cliente a eliminar.
+     */
     @Override
     public void eliminarCliente(String id) {
         for (Cliente cliente : sistemaConcesionario.getClientes()) {
             if (cliente.getId().equals(id)) {
                 sistemaConcesionario.getClientes().remove(cliente);
-                System.out.println("Cliente Eliminado exitosamente");
-                return;  
+                System.out.println("Cliente eliminado exitosamente.");
+                return;
             }
         }
         System.out.println("Cliente no encontrado.");
     }
 
+    /**
+     * Crea un nuevo cliente y lo añade al sistema del concesionario.
+     *
+     * @param nombre          El nombre del cliente.
+     * @param id              El identificador único del cliente.
+     * @param nombreDeUsuario El nombre de usuario del cliente.
+     * @param contraseña      La contraseña del cliente.
+     * @param palabraSecreta  La palabra secreta del cliente para recuperación de
+     *                        cuenta.
+     * @param email           El correo electrónico del cliente.
+     * @param direccion       La dirección del cliente.
+     * @param telefono        El número de teléfono del cliente.
+     */
     @Override
     public void crearCliente(String nombre, String id, String nombreDeUsuario, String contraseña,
             String palabraSecreta, String email, String direccion, String telefono) {
-
         Cliente nuevoCliente = new Cliente(nombre, id, nombreDeUsuario, contraseña, palabraSecreta, email, direccion,
                 telefono);
-
         sistemaConcesionario.agregarCliente(nuevoCliente);
         System.out.println("Cliente creado exitosamente.");
     }
+
+    /**
+     * Crea y añade un vehículo al sistema del concesionario.
+     *
+     * @param tipoVehiculo El tipo de vehículo a crear.
+     * @param vehiculo     El objeto Vehiculo que se va a añadir.
+     */
     @Override
     public void crearVehiculo(String tipoVehiculo, Vehiculo vehiculo) {
-
         sistemaConcesionario.getVehiculos().add(vehiculo);
         System.out.println("Vehículo " + vehiculo.getClass().getSimpleName() + " creado exitosamente");
     }
-
 
     public String getTelefono() {
         return telefono;

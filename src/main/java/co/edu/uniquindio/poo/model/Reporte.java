@@ -2,7 +2,12 @@ package co.edu.uniquindio.poo.model;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
-
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public class Reporte {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;

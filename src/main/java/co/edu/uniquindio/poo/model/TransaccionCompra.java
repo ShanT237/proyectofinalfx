@@ -1,7 +1,12 @@
 package co.edu.uniquindio.poo.model;
 
 import java.time.LocalDate;
-
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public class TransaccionCompra implements ITransaccion {
     private String codigo;
     private Cliente cliente;
@@ -17,16 +22,17 @@ public class TransaccionCompra implements ITransaccion {
         this.monto = calcularMontoCompra();
     }
     @Override 
-    public void procesar(Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
+    public void procesar(SistemaConcesionario sistema, Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
+        setSistema(sistema);
         if (vehiculo.pasaRevisionTecnica()) { 
             setCliente(cliente);
             setEmpleado(empleado);
             setVehiculo(vehiculo);
             setFechaCompra(LocalDate.now());
-            vehiculo.setDisponible(true); 
+            vehiculo.setDisponible(false); 
             this.monto = calcularMontoCompra(); 
 
-            
+            cliente.vehiculoAdquirido(vehiculo);
             sistema.getRegistro().registrarTransaccion(this);
             empleado.getTransacciones().add(this);
 
@@ -110,6 +116,12 @@ public class TransaccionCompra implements ITransaccion {
 
     public void setMonto(double monto) {
         this.monto = monto;
+    }
+    public SistemaConcesionario getSistema() {
+        return sistema;
+    }
+    public void setSistema(SistemaConcesionario sistema) {
+        this.sistema = sistema;
     }
 
     

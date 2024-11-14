@@ -1,12 +1,19 @@
 package co.edu.uniquindio.poo.model;
-
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public abstract class VehiculoCombustible extends Vehiculo {
     private double capacidadCombustible;
     private double consumoPorKm;
     private Enum<EnumCombustible> tipoCombustible;
 
     
-
+    /*
+     * Metodo Constructor
+     */
     public VehiculoCombustible(String marca, String modelo, String matricula, int cambios, double velocidadMaxima, double cilindraje,
             Enum<EnumTransmision> transmision, boolean esNuevo, double precio, double capacidadCombustible,
             double consumoPorKm, Enum<EnumCombustible> tipoCombustible) {
@@ -16,7 +23,9 @@ public abstract class VehiculoCombustible extends Vehiculo {
         this.tipoCombustible = tipoCombustible;
     }
 
-
+    /*
+     * Metodo Get y Set
+     */
     public double getCapacidadCombustible() {
         return capacidadCombustible;
     }

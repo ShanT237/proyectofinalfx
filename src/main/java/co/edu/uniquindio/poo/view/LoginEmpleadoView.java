@@ -12,7 +12,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginEmpleadoView {
-
+    
+    /*
+     * Atributos de la clase
+     */
     private App app;
     private LoginEmpleadoController controller;
     private SistemaConcesionario sistemaConcesionario;
@@ -40,7 +43,10 @@ public class LoginEmpleadoView {
 
         labelError.setVisible(false);
     }
-
+    
+    /*
+     * Metodo que maneja las acciones del boton ingresar
+     */
     @FXML
     void handleIngresar(ActionEvent event) {
         String nombreUsuario = fieldNombreUsuario.getText();

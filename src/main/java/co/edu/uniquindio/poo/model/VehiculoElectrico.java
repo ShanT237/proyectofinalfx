@@ -1,10 +1,17 @@
 package co.edu.uniquindio.poo.model;
-
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public abstract class VehiculoElectrico extends Vehiculo {
     private double autonomiaCarga;
     private double tiempoPromedioCarga;
 
-
+    /*
+     * Metodo Constructor
+     */
     public VehiculoElectrico(String marca, String modelo, String matricula, int cambios, double velocidadMaxima, double cilindraje,
             Enum<EnumTransmision> transmision, boolean esNuevo, double precio, double autonomiaCarga,
             double tiempoPromedioCarga) {
@@ -12,6 +19,10 @@ public abstract class VehiculoElectrico extends Vehiculo {
         this.autonomiaCarga = autonomiaCarga;
         this.tiempoPromedioCarga = tiempoPromedioCarga;
     }
+
+    /*
+     * Metodos Get y Set
+     */
 
     public double getAutonomiaCarga() {
         return autonomiaCarga;

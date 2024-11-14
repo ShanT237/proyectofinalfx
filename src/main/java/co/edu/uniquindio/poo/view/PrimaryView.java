@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 
 public class PrimaryView {
 
+    /*
+     * Atributos de la clase y sus metodos
+     */
     private App app;
 
     public void setApp(App app) {
@@ -20,18 +23,23 @@ public class PrimaryView {
     @FXML
     private Button buttonEmpleado;
 
+    /*
+     * Metodo que maneja las acciones de los botones
+     */
     @FXML
-    void handleButtonAction(ActionEvent event) {
+    public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == buttonAdministrador) {
-            app.openLoginAdmView(); 
+            app.openLoginAdmView();
         } else if (event.getSource() == buttonEmpleado) {
-            app.openLoginEmpleadoView(); 
+            app.openLoginEmpleadoView();
         }
     }
 
     @FXML
     void initialize() {
-        assert buttonAdministrador != null : "fx:id=\"buttonAdministrador\" was not injected: check your FXML file 'Primary.fxml'.";
-        assert buttonEmpleado != null : "fx:id=\"buttonEmpleado\" was not injected: check your FXML file 'Primary.fxml'.";
+        assert buttonAdministrador != null
+                : "fx:id=\"buttonAdministrador\" was not injected: check your FXML file 'Primary.fxml'.";
+        assert buttonEmpleado != null
+                : "fx:id=\"buttonEmpleado\" was not injected: check your FXML file 'Primary.fxml'.";
     }
 }

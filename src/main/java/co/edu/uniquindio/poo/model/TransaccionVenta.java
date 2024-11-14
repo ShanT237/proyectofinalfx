@@ -2,6 +2,12 @@ package co.edu.uniquindio.poo.model;
 
 import java.time.LocalDate;
 
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public class TransaccionVenta implements ITransaccion {
 
     private String codigo;
@@ -17,16 +23,31 @@ public class TransaccionVenta implements ITransaccion {
         monto = calcularMontoVenta();
     }
 
+    /**
+     * Processes a vehicle sale transaction by updating the sale date, client,
+     * employee, and vehicle details.
+     * Marks the vehicle as unavailable and calculates the sale amount. Registers
+     * the transaction in the system
+     * and adds it to the employee's transaction list. Outputs a success message if
+     * the vehicle is available,
+     * otherwise indicates the vehicle is not available for sale.
+     *
+     * @param cliente  the client involved in the transaction
+     * @param vehiculo the vehicle being sold
+     * @param empleado the employee handling the transaction
+     */
     @Override
-    public void procesar(Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
+    public void procesar(SistemaConcesionario sitema, Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
+        setSistema(sitema);
         if (vehiculo.isDisponible()) {
             setFechaVenta(LocalDate.now());
             setCliente(cliente);
             setEmpleado(empleado);
             setVehiculo(vehiculo);
-            vehiculo.setDisponible(false);
+            vehiculo.setDisponible(true);
             this.monto = calcularMontoVenta();
 
+            sistema.agregarVehiculo(vehiculo);
             sistema.getRegistro().registrarTransaccion(this);
             empleado.getTransacciones().add(this);
 
@@ -62,6 +83,14 @@ public class TransaccionVenta implements ITransaccion {
 
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public SistemaConcesionario getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(SistemaConcesionario sistema) {
+        this.sistema = sistema;
     }
 
     public void setCliente(Cliente cliente) {

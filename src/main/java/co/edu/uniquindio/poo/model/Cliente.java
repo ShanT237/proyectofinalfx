@@ -1,7 +1,12 @@
 package co.edu.uniquindio.poo.model;
 
 import java.util.LinkedList;
-
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public class Cliente extends Persona{
     private String direccion;
     private String telefono;
@@ -13,6 +18,11 @@ public class Cliente extends Persona{
         this.direccion = direccion;
         this.telefono = telefono;
         vehiculosPertenecientes = new LinkedList<>();
+    }
+
+    public void vehiculoAdquirido(Vehiculo vehiculo){
+        vehiculosPertenecientes.add(vehiculo);
+
     }
 
     public String getDireccion() {

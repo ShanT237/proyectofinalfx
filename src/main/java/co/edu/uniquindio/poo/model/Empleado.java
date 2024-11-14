@@ -1,7 +1,12 @@
 package co.edu.uniquindio.poo.model;
 
 import java.util.LinkedList;
-
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
 public class Empleado extends Persona implements IGestionar {
     private SistemaConcesionario sistemaConcesionario;
     private String puesto;
