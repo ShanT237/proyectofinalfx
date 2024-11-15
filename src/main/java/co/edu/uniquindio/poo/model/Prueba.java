@@ -12,6 +12,14 @@ public class Prueba {
 
 
     public void obtenerInformacion(){
-        System.out.println("obteniendo informacion");
+        System.out.println("obteniendo informacion del banco a pisocmak");
+    }
+
+    public void crearPersona(){
+        System.out.println("dime que vas hacer caujuu  ????????????????????");
+    }
+
+    public void crearSonido(){
+        System.out.println("creando sonido bummmmmmmmmmmmmmmm");
     }
 }
