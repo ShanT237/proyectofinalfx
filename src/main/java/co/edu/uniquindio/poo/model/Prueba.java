@@ -22,4 +22,7 @@ public class Prueba {
     public void crearSonido(){
         System.out.println("creando sonido bummmmmmmmmmmmmmmm");
     }
+    public void enviar(){
+        System.out.println("enviarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+    }
 }
