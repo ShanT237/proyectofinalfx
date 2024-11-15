@@ -10,4 +10,8 @@ public class Prueba {
         this.edad = edad;
     }
 
+
+    public void obtenerInformacion(){
+        System.out.println("obteniendo informacion");
+    }
 }
