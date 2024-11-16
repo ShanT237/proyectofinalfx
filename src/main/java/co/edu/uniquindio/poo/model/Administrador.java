@@ -92,20 +92,20 @@ public class Administrador extends Persona implements IGestionar {
         // Generar un código único para el reporte
         String codigo = "REP-" + (sistemaConcesionario.getReportes().size() + 1);
 
-        // Crear un nuevo reporte con la fecha actual y el empleado
+
         Reporte nuevoReporte = new Reporte(codigo, LocalDate.now(), empleado);
 
-        // Agregar transacciones del empleado al reporte
+
         List<Transaccion> transaccionesEmpleado = sistemaConcesionario.obtenerTransaccionesPorEmpleado(empleado);
         for (Transaccion transaccion : transaccionesEmpleado) {
             nuevoReporte.agregarTransaccion(transaccion);
         }
 
-        // Añadir el reporte a la lista de reportes del sistema
+
         sistemaConcesionario.getReportes().add(nuevoReporte);
 
-        // Mostrar un mensaje de confirmación
-        System.out.println("Reporte creado exitosamente:\n" + nuevoReporte.generarResumen());
+
+        System.out.println("Reporte creado exitosamente:" + nuevoReporte.generarResumen());
     }
 
     public String getTelefono() {
