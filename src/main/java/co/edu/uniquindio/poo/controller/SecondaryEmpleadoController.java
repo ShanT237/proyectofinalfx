@@ -5,7 +5,7 @@ import java.util.List;
 
 import co.edu.uniquindio.poo.model.Cliente;
 import co.edu.uniquindio.poo.model.Empleado;
-import co.edu.uniquindio.poo.model.ITransaccion;
+import co.edu.uniquindio.poo.model.Transaccion;
 import co.edu.uniquindio.poo.model.SistemaConcesionario;
 import co.edu.uniquindio.poo.model.Vehiculo;
 import javafx.collections.FXCollections;
@@ -16,7 +16,7 @@ public class SecondaryEmpleadoController {
     private Empleado empleado;
     private SistemaConcesionario sistema;
 
-    private List<ITransaccion> transacciones;
+    private List<Transaccion> transacciones;
 
     public SecondaryEmpleadoController(SistemaConcesionario sistema, Empleado empleado) {
         this.transacciones = new ArrayList<>();
@@ -29,7 +29,7 @@ public class SecondaryEmpleadoController {
         this.empleado = empleado;
     }
 
-    public ObservableList<ITransaccion> obtenerTransacciones() {
+    public ObservableList<Transaccion> obtenerTransacciones() {
         if (empleado != null) {
             System.out.println("Transacciones del empleado: " + empleado.getTransacciones());
             return FXCollections.observableArrayList(empleado.getTransacciones());

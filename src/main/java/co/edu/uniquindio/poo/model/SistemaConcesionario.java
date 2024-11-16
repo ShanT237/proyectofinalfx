@@ -163,6 +163,15 @@ public class SistemaConcesionario {
 
     }
 
+    public LinkedList<Transaccion> obtenerTransaccionesPorEmpleado(Empleado empleado){
+        LinkedList<Transaccion> transaccions = new LinkedList<>();
+
+        for(int i = 0; i < empleado.getTransacciones().size(); i++){
+            transaccions.add(empleado.getTransacciones().get(i));
+        }
+        return transaccions;
+    }
+
     /*
      * Metodos Get y Set
      */

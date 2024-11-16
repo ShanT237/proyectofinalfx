@@ -24,6 +24,7 @@ import co.edu.uniquindio.poo.model.Empleado;
 import co.edu.uniquindio.poo.model.EnumCombustible;
 import co.edu.uniquindio.poo.model.EnumTipoCamion;
 import co.edu.uniquindio.poo.model.EnumTransmision;
+import co.edu.uniquindio.poo.model.Transaccion;
 import co.edu.uniquindio.poo.model.Moto;
 import co.edu.uniquindio.poo.model.PickUp;
 import co.edu.uniquindio.poo.model.RegistroTransacciones;

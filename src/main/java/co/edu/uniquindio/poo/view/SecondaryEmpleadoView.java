@@ -8,7 +8,7 @@ import co.edu.uniquindio.poo.App;
 import co.edu.uniquindio.poo.controller.*;
 import co.edu.uniquindio.poo.model.Empleado;
 import co.edu.uniquindio.poo.model.Cliente;
-import co.edu.uniquindio.poo.model.ITransaccion;
+import co.edu.uniquindio.poo.model.Transaccion;
 import co.edu.uniquindio.poo.model.Vehiculo;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -131,13 +131,13 @@ public class SecondaryEmpleadoView {
     private TableColumn<Vehiculo, String> tipoVehiculoTransaccionColumna;
 
     @FXML
-    private TableView<ITransaccion> tablaTransacciones;
+    private TableView<Transaccion> tablaTransacciones;
     @FXML
     private TableColumn<Cliente, String> transaccionesColumnaCliente;
     @FXML
     private TableColumn<Vehiculo, String> transaccionesColumnaVehiculo;
     @FXML
-    private TableColumn<ITransaccion, String> transaccionesColumnaCodigo;
+    private TableColumn<Transaccion, String> transaccionesColumnaCodigo;
     @FXML
     private TableColumn<Empleado, String> transaccionesColumnaEmpleado;
 
@@ -167,13 +167,13 @@ public class SecondaryEmpleadoView {
     @FXML
     private Button registroPaneVolverButton;
     @FXML
-    private TableView<ITransaccion> registroPaneTablaTransacciones;
+    private TableView<Transaccion> registroPaneTablaTransacciones;
     @FXML
-    private TableColumn<ITransaccion, String> tablaTransaccionesEmpleadoTipo;
+    private TableColumn<Transaccion, String> tablaTransaccionesEmpleadoTipo;
     @FXML
-    private TableColumn<ITransaccion, String> tablaTransaccionesEmpleadoCliente;
+    private TableColumn<Transaccion, String> tablaTransaccionesEmpleadoCliente;
     @FXML
-    private TableColumn<ITransaccion, String> tablaTransaccionesEmpleadoMatricula;
+    private TableColumn<Transaccion, String> tablaTransaccionesEmpleadoMatricula;
 
     /*
      * No Modificar
@@ -276,7 +276,7 @@ public class SecondaryEmpleadoView {
         paneClientesTablaCRegitrados.setItems(clientes);
         paneClientesTablaCRegitrados.refresh(); // Forzar actualización visual de la tabla
 
-        ObservableList<ITransaccion> transacciones = FXCollections
+        ObservableList<Transaccion> transacciones = FXCollections
                 .observableArrayList(controller.obtenerTransacciones());
         registroPaneTablaTransacciones.setItems(transacciones);
         registroPaneTablaTransacciones.refresh(); // Forzar actualización de la tabla de transacciones

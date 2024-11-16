@@ -1,5 +1,8 @@
 package co.edu.uniquindio.poo.model;
 
+import java.time.LocalDate;
+import java.util.List;
+
 /**
  * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
  * Fecha: 13/11/2024
@@ -80,6 +83,27 @@ public class Administrador extends Persona implements IGestionar {
     public void crearVehiculo(Vehiculo vehiculo) {
         sistemaConcesionario.getVehiculos().add(vehiculo);
         System.out.println("Vehículo " + vehiculo.getClass().getSimpleName() + " creado exitosamente");
+    }
+
+
+     public void crearReporte(Empleado empleado) {
+        // Generar un código único para el reporte
+        String codigo = "REP-" + (sistemaConcesionario.getReportes().size() + 1);
+
+        // Crear un nuevo reporte con la fecha actual y el empleado
+        Reporte nuevoReporte = new Reporte(codigo, LocalDate.now(), empleado);
+
+        // Agregar transacciones del empleado al reporte
+        List<Transaccion> transaccionesEmpleado = sistemaConcesionario.obtenerTransaccionesPorEmpleado(empleado);
+        for (Transaccion transaccion : transaccionesEmpleado) {
+            nuevoReporte.agregarTransaccion(transaccion);
+        }
+
+        // Añadir el reporte a la lista de reportes del sistema
+        sistemaConcesionario.getReportes().add(nuevoReporte);
+
+        // Mostrar un mensaje de confirmación
+        System.out.println("Reporte creado exitosamente:\n" + nuevoReporte.generarResumen());
     }
 
     public String getTelefono() {

@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.model;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
+
 /**
  * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
  * Fecha: 13/11/2024
@@ -9,10 +10,9 @@ import java.util.LinkedList;
  *
  */
 public class Reporte {
-    private LocalDate fechaInicio;
-    private LocalDate fechaFin;
+    private LocalDate fechaDeReporte;
     private Empleado empleado;
-    private LinkedList<ITransaccion> transacciones;
+    private LinkedList<Transaccion> transacciones;
     private String codigo;
 
     private int totalVentas;
@@ -21,21 +21,20 @@ public class Reporte {
     private double montoTotal;
 
     public Reporte(String codigo,
-    LocalDate fechaInicio, LocalDate fechaFin, Empleado empleado) {
+            LocalDate fechaDeReporte, Empleado empleado) {
         this.codigo = codigo;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaDeReporte = fechaDeReporte;
         this.empleado = empleado;
         transacciones = new LinkedList<>();
-  
+
     }
 
-    public void agregarTransaccion(ITransaccion transaccionParam) {
+    public void agregarTransaccion(Transaccion transaccionParam) {
         transacciones.add(transaccionParam);
         actualizarTotales(transaccionParam);
     }
 
-    private void actualizarTotales(ITransaccion transaccion) {
+    private void actualizarTotales(Transaccion transaccion) {
         switch (transaccion.getTipo()) {
             case "TransaccionVenta":
                 totalVentas++;
@@ -52,26 +51,10 @@ public class Reporte {
 
     public String generarResumen() {
         return "Resumen del Reporte:\n" +
-               "Total Ventas: " + totalVentas + "\n" +
-               "Total Alquileres: " + totalAlquileres + "\n" +
-               "Total Compras: " + totalCompras + "\n" +
-               "Monto Total: $" + montoTotal;
-    }
-
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public LocalDate getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(LocalDate fechaFin) {
-        this.fechaFin = fechaFin;
+                "Total Ventas: " + totalVentas + "\n" +
+                "Total Alquileres: " + totalAlquileres + "\n" +
+                "Total Compras: " + totalCompras + "\n" +
+                "Monto Total: $" + montoTotal;
     }
 
     public Empleado getEmpleado() {
@@ -82,11 +65,11 @@ public class Reporte {
         this.empleado = empleado;
     }
 
-    public LinkedList<ITransaccion> getTransacciones() {
+    public LinkedList<Transaccion> getTransacciones() {
         return transacciones;
     }
 
-    public void setTransacciones(LinkedList<ITransaccion> transacciones) {
+    public void setTransacciones(LinkedList<Transaccion> transacciones) {
         this.transacciones = transacciones;
     }
 
@@ -129,7 +112,13 @@ public class Reporte {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    
-    
+
+    public LocalDate getFechaDeReporte() {
+        return fechaDeReporte;
+    }
+
+    public void setFechaDeReporte(LocalDate fechaDeReporte) {
+        this.fechaDeReporte = fechaDeReporte;
+    }
 
 }

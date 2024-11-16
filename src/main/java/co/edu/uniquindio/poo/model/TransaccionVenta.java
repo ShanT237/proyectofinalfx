@@ -8,7 +8,7 @@ import java.time.LocalDate;
  * Licencia: GNU GPL V3
  *
  */
-public class TransaccionVenta implements ITransaccion {
+public class TransaccionVenta extends Transaccion {
 
     private String codigo;
     private Cliente cliente;
@@ -18,9 +18,12 @@ public class TransaccionVenta implements ITransaccion {
     private double monto;
     private SistemaConcesionario sistema;
 
+    
+
     public TransaccionVenta(String codigo) {
-        this.codigo = codigo;
-        monto = calcularMontoVenta();
+        super(codigo);
+        this.monto = calcularMontoVenta();
+
     }
 
     /**
@@ -59,19 +62,9 @@ public class TransaccionVenta implements ITransaccion {
     }
 
     @Override
-    public String getDetalles() {
-        return codigo;
-    }
-
-    @Override
     public String toString() {
         return "TransaccionVenta [codigo=" + codigo + ", cliente=" + cliente + ", empleado=" + empleado + ", vehiculo="
                 + vehiculo + ", fechaVenta=" + fechaVenta + ", monto=" + monto + ", sistema=" + sistema + "]";
-    }
-
-    @Override
-    public String getTipo() {
-        return getClass().getSimpleName();
     }
 
     private double calcularMontoVenta() {
@@ -135,9 +128,16 @@ public class TransaccionVenta implements ITransaccion {
         this.monto = monto;
     }
 
-    public ITransaccion geTransaccion(){
+    public Transaccion geTransaccion(){
         return this;
     }
+
+    @Override
+    protected String getTipo() {
+        return getClass().getSimpleName();
+    }
+
+
     
 
 }

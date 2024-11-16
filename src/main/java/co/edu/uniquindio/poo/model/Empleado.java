@@ -11,7 +11,7 @@ public class Empleado extends Persona implements IGestionar {
     private SistemaConcesionario sistemaConcesionario;
     private String puesto;
     private String telefono;
-    private LinkedList<ITransaccion> transacciones;
+    private LinkedList<Transaccion> transacciones;
 
     public Empleado(String nombre, String id, String nombreDeUsuario, String contraseña, String palabraSecreta,
             String email, String puesto, String telefono) {
@@ -46,6 +46,7 @@ public class Empleado extends Persona implements IGestionar {
         System.out.println("Cliente no encontrado.");
     }
 
+
     @Override
     public void crearVehiculo(Vehiculo vehiculo) {
 
@@ -76,7 +77,7 @@ public class Empleado extends Persona implements IGestionar {
         }
         System.out.println("Cliente no encontrado.");
     }
-
+    
 
     public String getPuesto() {
         return puesto;
@@ -94,11 +95,11 @@ public class Empleado extends Persona implements IGestionar {
         this.telefono = telefono;
     }
 
-    public LinkedList<ITransaccion> getTransacciones() {
+    public LinkedList<Transaccion> getTransacciones() {
         return transacciones;
     }
 
-    public void setTransacciones(LinkedList<ITransaccion> transacciones) {
+    public void setTransacciones(LinkedList<Transaccion> transacciones) {
         this.transacciones = transacciones;
     }
 

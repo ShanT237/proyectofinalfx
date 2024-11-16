@@ -10,7 +10,7 @@ import java.util.LinkedList;
  */
 public class RegistroTransacciones {
     private LocalDate fecha;
-    private LinkedList<ITransaccion> transacciones;
+    private LinkedList<Transaccion> transacciones;
     
     /*
      * Metodo constructor
@@ -25,7 +25,7 @@ public class RegistroTransacciones {
      * Metodos principales
      */
 
-    public void registrarTransaccion(ITransaccion transaccion){
+    public void registrarTransaccion(Transaccion transaccion){
         if(verificarTransaccion(transaccion)){
             System.out.println("No se puede registrar la transaccion");
 
@@ -36,10 +36,10 @@ public class RegistroTransacciones {
 
     }
 
-    public boolean verificarTransaccion(ITransaccion transaccion ){
+    public boolean verificarTransaccion(Transaccion transaccion ){
         boolean sentinela = false;
-        for (ITransaccion iTransaccion : transacciones) {
-            if(iTransaccion.getDetalles().equals(transaccion.getDetalles())){
+        for (Transaccion transaccionIterar : transacciones) {
+            if(transaccionIterar.getCodigo().equals(transaccion.getCodigo())){
                 sentinela = true;
                 break;
             }
@@ -60,11 +60,11 @@ public class RegistroTransacciones {
         this.fecha = fecha;
     }
 
-    public LinkedList<ITransaccion> getTransacciones() {
+    public LinkedList<Transaccion> getTransacciones() {
         return transacciones;
     }
 
-    public void setTransacciones(LinkedList<ITransaccion> transacciones) {
+    public void setTransacciones(LinkedList<Transaccion> transacciones) {
         this.transacciones = transacciones;
     }
 
