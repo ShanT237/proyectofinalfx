@@ -108,6 +108,13 @@ public class Administrador extends Persona implements IGestionar {
         System.out.println("Reporte creado exitosamente:" + nuevoReporte.generarResumen());
     }
 
+    @Override 
+    public void eliminarTransaccion(Transaccion transaccion){
+        if(sistemaConcesionario.getRegistro().eliminarTransaccion(transaccion.getCodigo())){
+
+        }
+    }
+
     public String getTelefono() {
         return telefono;
     }

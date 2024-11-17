@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.model;
 
 import java.util.LinkedList;
+
 /**
  * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
  * Fecha: 13/11/2024
@@ -40,12 +41,11 @@ public class Empleado extends Persona implements IGestionar {
                 c.setEmail(cliente.getEmail());
                 c.setTelefono(cliente.getTelefono());
                 System.out.println("Cliente actualizado exitosamente.");
-                return;  
+                return;
             }
         }
         System.out.println("Cliente no encontrado.");
     }
-
 
     @Override
     public void crearVehiculo(Vehiculo vehiculo) {
@@ -77,7 +77,13 @@ public class Empleado extends Persona implements IGestionar {
         }
         System.out.println("Cliente no encontrado.");
     }
-    
+
+    @Override 
+    public void eliminarTransaccion(Transaccion transaccion){
+        if(sistemaConcesionario.getRegistro().eliminarTransaccion(transaccion.getCodigo())){
+            transacciones.remove(transaccion);
+        }
+    }
 
     public String getPuesto() {
         return puesto;

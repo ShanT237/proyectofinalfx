@@ -31,9 +31,9 @@ import co.edu.uniquindio.poo.model.RegistroTransacciones;
 import co.edu.uniquindio.poo.model.RevisionTecnica;
 import co.edu.uniquindio.poo.model.Sedan;
 import co.edu.uniquindio.poo.model.SistemaConcesionario;
-import co.edu.uniquindio.poo.model.TransaccionAlquiler;
-import co.edu.uniquindio.poo.model.TransaccionCompra;
-import co.edu.uniquindio.poo.model.TransaccionVenta;
+import co.edu.uniquindio.poo.model.TAlquiler;
+import co.edu.uniquindio.poo.model.TCompra;
+import co.edu.uniquindio.poo.model.TVenta;
 import co.edu.uniquindio.poo.model.Van;
 import co.edu.uniquindio.poo.model.Vehiculo;
 import co.edu.uniquindio.poo.view.LoginAdmView;
@@ -204,15 +204,39 @@ public class App extends Application {
                                 "teresa.delgado@gmail.com",
                                 "Carrera 50 #8-10", "3215557677");
 
-                sistemaConcesionario = new SistemaConcesionario("Concesionario de Ejemplo", adm1, registro);
+                sistemaConcesionario = new SistemaConcesionario("Concesionaria Shane", adm1, registro);
+                // Agregar empleados al sistema
                 sistemaConcesionario.agregarEmpleado(empleado1);
                 sistemaConcesionario.agregarEmpleado(empleado2);
+                sistemaConcesionario.agregarEmpleado(empleado3);
+                sistemaConcesionario.agregarEmpleado(empleado4);
+                sistemaConcesionario.agregarEmpleado(empleado5);
+                sistemaConcesionario.agregarEmpleado(empleado6);
+                sistemaConcesionario.agregarEmpleado(empleado7);
+                sistemaConcesionario.agregarEmpleado(empleado8);
+                sistemaConcesionario.agregarEmpleado(empleado9);
+                sistemaConcesionario.agregarEmpleado(empleado10);
+                sistemaConcesionario.agregarEmpleado(empleado11);
+                sistemaConcesionario.agregarEmpleado(empleado12);
+                sistemaConcesionario.agregarEmpleado(empleado13);
+                sistemaConcesionario.agregarEmpleado(empleado14);
+                sistemaConcesionario.agregarEmpleado(empleado15);
 
                 sistemaConcesionario.agregarCliente(cliente1);
                 sistemaConcesionario.agregarCliente(cliente2);
                 sistemaConcesionario.agregarCliente(cliente3);
                 sistemaConcesionario.agregarCliente(cliente4);
                 sistemaConcesionario.agregarCliente(cliente5);
+                sistemaConcesionario.agregarCliente(cliente6);
+                sistemaConcesionario.agregarCliente(cliente7);
+                sistemaConcesionario.agregarCliente(cliente8);
+                sistemaConcesionario.agregarCliente(cliente9);
+                sistemaConcesionario.agregarCliente(cliente10);
+                sistemaConcesionario.agregarCliente(cliente11);
+                sistemaConcesionario.agregarCliente(cliente12);
+                sistemaConcesionario.agregarCliente(cliente13);
+                sistemaConcesionario.agregarCliente(cliente14);
+                sistemaConcesionario.agregarCliente(cliente15);
 
                 // Revisiones Tecnicas
                 RevisionTecnica revision1 = new RevisionTecnica(LocalDate.of(2024, 1, 10), 1, LocalDate.of(2025, 1, 10),
@@ -326,35 +350,204 @@ public class App extends Application {
                                 "McLaren", "720S", "QRS852", 7, 340.0, 3.8, EnumTransmision.MANUAL,
                                 true, 300000.0, true, true, 2, 2, 7, 710.0, 2.8, "Supercar de alto rendimiento");
 
+                Camion camion1 = new Camion("Volvo", "FH16", "ABC123", 12, 120.0, 16.1,
+                                EnumTransmision.AUTOMATICA, true, 150000.0,
+                                true, false, 20000, 4, true, true, true,
+                                EnumTipoCamion.ARTICULADO);
+
+                Camion camion2 = new Camion("Mercedes", "Actros", "DEF456", 10, 110.0, 15.0,
+                                EnumTransmision.MANUAL, false, 130000.0,
+                                false, true, 18000, 3, false, true, false,
+                                EnumTipoCamion.CISTERNA);
+
+                // Crear nuevos vehículos
+                Moto moto3 = new Moto("Suzuki", "GSX-R750", "XYZ789", 6, 240.0, 750.0,
+                                EnumTransmision.MANUAL, true, 9000.0, 16.0, 5.0, EnumCombustible.GASOLINA);
+
+                Moto moto4 = new Moto("Kawasaki", "Ninja ZX-6R", "LMN456", 6, 250.0, 636.0,
+                                EnumTransmision.MANUAL, true, 9500.0, 17.0, 4.8, EnumCombustible.GASOLINA);
+
+                Camioneta camioneta6 = new Camioneta(
+                                "Jeep", "Grand Cherokee", "OPQ123", 8, 260.0, 6.4, EnumTransmision.AUTOMATICA,
+                                true, 70000.0, 450.0, 3.5, 7, 5, 550, 9, true, true, true, true, true, true, true,
+                                true);
+
+                Camioneta camioneta7 = new Camioneta(
+                                "Hyundai", "Santa Fe", "RST456", 6, 230.0, 3.5, EnumTransmision.AUTOMATICA,
+                                true, 55000.0, 400.0, 3.0, 7, 5, 500, 8, true, true, true, true, true, true, true,
+                                true);
+
+                PickUp pickUp6 = new PickUp(
+                                "GMC", "Sierra", "UVW789", 6, 200.0, 5.3, EnumTransmision.AUTOMATICA,
+                                true, 48000.0, true, true, 5, 4, 7, 900, true, true, true, true, true);
+
+                PickUp pickUp7 = new PickUp(
+                                "Toyota", "Hilux", "XYZ012", 6, 190.0, 4.0, EnumTransmision.MANUAL,
+                                true, 42000.0, false, true, 5, 4, 6, 850, true, true, true, true, true);
+
+                Sedan sedan6 = new Sedan(
+                                "Kia", "Optima", "ABC345", 6, 210.0, 2.4, EnumTransmision.AUTOMATICA,
+                                true, 32000.0, 450.0, 2.5, 5, 4, 400, 6, true, true, true, true, true, true, true);
+
+                Sedan sedan7 = new Sedan(
+                                "Mazda", "6", "DEF678", 6, 220.0, 2.5, EnumTransmision.AUTOMATICA,
+                                true, 34000.0, 470.0, 2.6, 5, 4, 420, 7, true, true, true, true, true, true, true);
+
+                Deportivo deportivo6 = new Deportivo(
+                                "Chevrolet", "Corvette", "GHI901", 7, 320.0, 6.2, EnumTransmision.MANUAL,
+                                true, 70000.0, true, true, 2, 2, 8, 650.0, 3.0, "Deportivo de alto rendimiento");
+
+                Deportivo deportivo7 = new Deportivo(
+                                "Ford", "Mustang", "JKL234", 6, 300.0, 5.0, EnumTransmision.AUTOMATICA,
+                                true, 55000.0, true, false, 2, 2, 6, 450.0, 3.5, "Deportivo clásico");
+
+                Camion camion3 = new Camion("MAN", "TGX", "MNO567", 12, 115.0, 15.5,
+                                EnumTransmision.AUTOMATICA, true, 140000.0,
+                                true, false, 19000, 4, true, true, true,
+                                EnumTipoCamion.ARTICULADO);
+
+                Camion camion4 = new Camion("DAF", "XF", "PQR890", 10, 125.0, 14.0,
+                                EnumTransmision.MANUAL, false, 135000.0,
+                                false, true, 18500, 3, false, true, false,
+                                EnumTipoCamion.CISTERNA);
+
+                Van van3 = new Van(
+                                "Renault", "Trafic", "STU123", 5, 170.0, 2.0, EnumTransmision.AUTOMATICA,
+                                true, 32000.0, 65.0, 11.0, EnumCombustible.GASOLINA,
+                                14, 4, 850, 7, true, true, true, true);
+
+                Van van4 = new Van(
+                                "Peugeot", "Boxer", "VWX456", 6, 150.0, 2.2, EnumTransmision.MANUAL,
+                                false, 36000.0, 70.0, 12.5, EnumCombustible.DIESEL,
+                                13, 4, 950, 9, true, false, true, true);
+
+                Bus bus3 = new Bus(
+                                "Iveco", "Daily", "YZA789", 8, 95.0, 5.8, EnumTransmision.AUTOMATICA,
+                                true, 140000.0, 290.0, 2.6, 48, 4, 980, 9, 2, 3, true, true, true);
+
+                Bus bus4 = new Bus(
+                                "Scania", "Citywide", "BCD012", 7, 85.0, 5.3, EnumTransmision.MANUAL,
+                                false, 125000.0, 270.0, 2.9, 42, 4, 930, 8, 2, 4, false, true, true);
+
+                // Agregar los nuevos vehículos al sistema
+                sistemaConcesionario.agregarVehiculo(moto3);
+                sistemaConcesionario.agregarVehiculo(moto4);
+                sistemaConcesionario.agregarVehiculo(camioneta6);
+                sistemaConcesionario.agregarVehiculo(camioneta7);
+                sistemaConcesionario.agregarVehiculo(pickUp6);
+                sistemaConcesionario.agregarVehiculo(pickUp7);
+                sistemaConcesionario.agregarVehiculo(sedan6);
+                sistemaConcesionario.agregarVehiculo(sedan7);
+                sistemaConcesionario.agregarVehiculo(deportivo6);
+                sistemaConcesionario.agregarVehiculo(deportivo7);
+                sistemaConcesionario.agregarVehiculo(camion3);
+                sistemaConcesionario.agregarVehiculo(camion4);
+                sistemaConcesionario.agregarVehiculo(van3);
+                sistemaConcesionario.agregarVehiculo(van4);
+                sistemaConcesionario.agregarVehiculo(bus3);
+                sistemaConcesionario.agregarVehiculo(bus4);
+
                 sistemaConcesionario.agregarVehiculo(moto1);
                 sistemaConcesionario.agregarVehiculo(moto2);
+                // Camionetas
+                sistemaConcesionario.agregarVehiculo(camioneta1);
+                sistemaConcesionario.agregarVehiculo(camioneta2);
+                sistemaConcesionario.agregarVehiculo(camioneta3);
+                sistemaConcesionario.agregarVehiculo(camioneta4);
+                sistemaConcesionario.agregarVehiculo(camioneta5);
+
+                sistemaConcesionario.agregarVehiculo(camion1);
+                sistemaConcesionario.agregarVehiculo(camion2);
+
+                // PickUps
+                sistemaConcesionario.agregarVehiculo(pickUp1);
+                sistemaConcesionario.agregarVehiculo(pickUp2);
+                sistemaConcesionario.agregarVehiculo(pickUp3);
+                sistemaConcesionario.agregarVehiculo(pickUp4);
+                sistemaConcesionario.agregarVehiculo(pickUp5);
+
+                // Sedanes
+                sistemaConcesionario.agregarVehiculo(sedan1);
+                sistemaConcesionario.agregarVehiculo(sedan2);
+                sistemaConcesionario.agregarVehiculo(sedan3);
+                sistemaConcesionario.agregarVehiculo(sedan4);
+                sistemaConcesionario.agregarVehiculo(sedan5);
+
+                // Deportivos
+                sistemaConcesionario.agregarVehiculo(deportivo1);
+                sistemaConcesionario.agregarVehiculo(deportivo2);
+                sistemaConcesionario.agregarVehiculo(deportivo3);
+                sistemaConcesionario.agregarVehiculo(deportivo4);
+                sistemaConcesionario.agregarVehiculo(deportivo5);
 
                 // Transacciones de alquiler
-                TransaccionAlquiler alquiler1 = new TransaccionAlquiler("ALQ001", 20);
-                TransaccionAlquiler alquiler2 = new TransaccionAlquiler("ALQ002", 25);
-                TransaccionAlquiler alquiler3 = new TransaccionAlquiler("ALQ003", 30);
-                TransaccionAlquiler alquiler4 = new TransaccionAlquiler("ALQ004", 35);
-                TransaccionAlquiler alquiler5 = new TransaccionAlquiler("ALQ005", 40);
-                TransaccionAlquiler alquiler6 = new TransaccionAlquiler("ALQ006", 45);
-                TransaccionAlquiler alquiler7 = new TransaccionAlquiler("ALQ007", 50);
+                TAlquiler alquiler1 = new TAlquiler("ALQ001", 20);
+                TAlquiler alquiler2 = new TAlquiler("ALQ002", 25);
+                TAlquiler alquiler3 = new TAlquiler("ALQ003", 30);
+                TAlquiler alquiler4 = new TAlquiler("ALQ004", 35);
+                TAlquiler alquiler5 = new TAlquiler("ALQ005", 40);
+                TAlquiler alquiler6 = new TAlquiler("ALQ006", 45);
+                TAlquiler alquiler7 = new TAlquiler("ALQ007", 50);
 
                 // Transacciones de compra
-                TransaccionCompra compra1 = new TransaccionCompra("CMP001");
-                TransaccionCompra compra2 = new TransaccionCompra("CMP002");
-                TransaccionCompra compra3 = new TransaccionCompra("CMP003");
-                TransaccionCompra compra4 = new TransaccionCompra("CMP004");
-                TransaccionCompra compra5 = new TransaccionCompra("CMP005");
-                TransaccionCompra compra6 = new TransaccionCompra("CMP006");
-                TransaccionCompra compra7 = new TransaccionCompra("CMP007");
+                TCompra compra1 = new TCompra("CMP001");
+                TCompra compra2 = new TCompra("CMP002");
+                TCompra compra3 = new TCompra("CMP003");
+                TCompra compra4 = new TCompra("CMP004");
+                TCompra compra5 = new TCompra("CMP005");
+                TCompra compra6 = new TCompra("CMP006");
+                TCompra compra7 = new TCompra("CMP007");
 
                 // Transacciones de venta
-                TransaccionVenta venta1 = new TransaccionVenta("VTA001");
-                TransaccionVenta venta2 = new TransaccionVenta("VTA002");
-                TransaccionVenta venta3 = new TransaccionVenta("VTA003");
-                TransaccionVenta venta4 = new TransaccionVenta("VTA004");
-                TransaccionVenta venta5 = new TransaccionVenta("VTA005");
-                TransaccionVenta venta6 = new TransaccionVenta("VTA006");
-                TransaccionVenta venta7 = new TransaccionVenta("VTA007");
+                TVenta venta1 = new TVenta("VTA001");
+                TVenta venta2 = new TVenta("VTA002");
+                TVenta venta3 = new TVenta("VTA003");
+                TVenta venta4 = new TVenta("VTA004");
+                TVenta venta5 = new TVenta("VTA005");
+                TVenta venta6 = new TVenta("VTA006");
+                TVenta venta7 = new TVenta("VTA007");
+
+                // Crear nuevas transacciones de compra
+                TCompra compra8 = new TCompra("CMP008");
+                TCompra compra9 = new TCompra("CMP009");
+                TCompra compra10 = new TCompra("CMP010");
+                TCompra compra11 = new TCompra("CMP011");
+                TCompra compra12 = new TCompra("CMP012");
+
+                // Crear nuevas transacciones de venta
+                TVenta venta8 = new TVenta("VTA008");
+                TVenta venta9 = new TVenta("VTA009");
+                TVenta venta10 = new TVenta("VTA010");
+                TVenta venta11 = new TVenta("VTA011");
+                TVenta venta12 = new TVenta("VTA012");
+
+                // Crear nuevas transacciones de alquiler
+                TAlquiler alquiler8 = new TAlquiler("ALQ008", 55);
+                TAlquiler alquiler9 = new TAlquiler("ALQ009", 60);
+                TAlquiler alquiler10 = new TAlquiler("ALQ010", 65);
+                TAlquiler alquiler11 = new TAlquiler("ALQ011", 70);
+                TAlquiler alquiler12 = new TAlquiler("ALQ012", 75);
+
+                // Procesar las nuevas transacciones de compra
+                compra8.procesar(sistemaConcesionario, cliente8, camioneta4, empleado9);
+                compra9.procesar(sistemaConcesionario, cliente9, pickUp4, empleado10);
+                compra10.procesar(sistemaConcesionario, cliente10, sedan3, empleado11);
+                compra11.procesar(sistemaConcesionario, cliente11, deportivo3, empleado12);
+                compra12.procesar(sistemaConcesionario, cliente12, camion2, empleado13);
+
+                // Procesar las nuevas transacciones de venta
+                venta8.procesar(sistemaConcesionario, cliente8, camioneta5, empleado9);
+                venta9.procesar(sistemaConcesionario, cliente9, pickUp5, empleado10);
+                venta10.procesar(sistemaConcesionario, cliente10, sedan4, empleado11);
+                venta11.procesar(sistemaConcesionario, cliente11, deportivo4, empleado12);
+                venta12.procesar(sistemaConcesionario, cliente12, camion1, empleado13);
+
+                // Procesar las nuevas transacciones de alquiler
+                alquiler8.procesar(sistemaConcesionario, cliente8, van3, empleado9);
+                alquiler9.procesar(sistemaConcesionario, cliente9, van4, empleado10);
+                alquiler10.procesar(sistemaConcesionario, cliente10, bus4, empleado11);
+                alquiler11.procesar(sistemaConcesionario, cliente11, bus3, empleado12);
+                alquiler12.procesar(sistemaConcesionario, cliente12, moto1, empleado13);
 
                 // Procesar las transacciones
                 alquiler1.procesar(sistemaConcesionario, cliente3, moto2, empleado7);
@@ -388,9 +581,6 @@ public class App extends Application {
                 venta6.procesar(sistemaConcesionario, cliente6, pickUp3, empleado8);
                 venta7.procesar(sistemaConcesionario, cliente7, sedan1, empleado2);
 
-                // Crear la lista de vehículos en espera
-                List<Vehiculo> ListaVehiculosEnEspera = new ArrayList<>();
-
                 // Crear vehículos
                 Van van1 = new Van(
                                 "Ford", "Transit", "ABC123", 5, 180.0, 2.3, EnumTransmision.AUTOMATICA,
@@ -400,12 +590,6 @@ public class App extends Application {
                                 "Mercedes", "Sprinter", "DEF456", 6, 160.0, 2.2, EnumTransmision.MANUAL,
                                 false, 35000.0, 75.0, 13.5, EnumCombustible.DIESEL,
                                 12, 4, 900, 8, true, false, true, true);
-                Camion camion1 = new Camion(
-                                "Volvo", "FH", "GHI789", 6, 120.0, 13.0, EnumTransmision.AUTOMATICA,
-                                true, 70000.0, true, false, 18000, 4, true, true, true, EnumTipoCamion.CISTERNA);
-                Camion camion2 = new Camion(
-                                "Scania", "R500", "JKL012", 6, 130.0, 12.5, EnumTransmision.MANUAL,
-                                false, 75000.0, false, true, 20000, 3, true, true, true, EnumTipoCamion.CARGAPESADA);
                 Bus bus1 = new Bus(
                                 "Mercedes", "Citaro", "MNO345", 8, 100.0, 6.0, EnumTransmision.AUTOMATICA,
                                 true, 150000.0, 300.0, 2.5, 50, 4, 1000, 10, 2, 3, true, true, true);
@@ -416,10 +600,63 @@ public class App extends Application {
                 // Añadir los vehículos a la lista de espera
                 listaDeEspera.add(van1);
                 listaDeEspera.add(van2);
-                listaDeEspera.add(camion1);
-                listaDeEspera.add(camion2);
                 listaDeEspera.add(bus1);
                 listaDeEspera.add(bus2);
+
+                // Crear 10 nuevos vehículos
+                Van van5 = new Van(
+                                "Fiat", "Ducato", "EFG123", 5, 160.0, 2.3, EnumTransmision.AUTOMATICA,
+                                true, 31000.0, 68.0, 11.5, EnumCombustible.GASOLINA,
+                                14, 4, 820, 7, true, true, true, true);
+
+                Van van6 = new Van(
+                                "Citroën", "Jumper", "HIJ456", 6, 155.0, 2.2, EnumTransmision.MANUAL,
+                                false, 33000.0, 72.0, 12.8, EnumCombustible.DIESEL,
+                                13, 4, 870, 8, true, false, true, true);
+
+                Bus bus5 = new Bus(
+                                "MAN", "Lion's City", "KLM789", 8, 95.0, 5.9, EnumTransmision.AUTOMATICA,
+                                true, 145000.0, 295.0, 2.7, 49, 4, 970, 9, 2, 3, true, true, true);
+
+                Bus bus6 = new Bus(
+                                "Solaris", "Urbino", "NOP012", 7, 88.0, 5.4, EnumTransmision.MANUAL,
+                                false, 118000.0, 275.0, 2.9, 44, 4, 920, 8, 2, 4, false, true, true);
+
+                Moto moto5 = new Moto("Ducati", "Monster", "QRS345", 6, 230.0, 821.0,
+                                EnumTransmision.MANUAL, true, 12000.0, 18.0, 6.0, EnumCombustible.GASOLINA);
+
+                Moto moto6 = new Moto("BMW", "S1000RR", "TUV678", 6, 299.0, 999.0,
+                                EnumTransmision.MANUAL, true, 15000.0, 16.5, 5.8, EnumCombustible.GASOLINA);
+
+                Camion camion5 = new Camion("Scania", "R500", "WXY901", 12, 130.0, 16.5,
+                                EnumTransmision.AUTOMATICA, true, 155000.0,
+                                true, false, 21000, 4, true, true, true,
+                                EnumTipoCamion.ARTICULADO);
+
+                Camion camion6 = new Camion("Iveco", "Stralis", "ZAB234", 10, 115.0, 14.5,
+                                EnumTransmision.MANUAL, false, 140000.0,
+                                false, true, 19500, 3, false, true, false,
+                                EnumTipoCamion.CISTERNA);
+
+                PickUp pickUp8 = new PickUp(
+                                "Isuzu", "D-Max", "CDE567", 6, 185.0, 3.0, EnumTransmision.AUTOMATICA,
+                                true, 43000.0, true, true, 5, 4, 6, 820, true, true, true, true, true);
+
+                Sedan sedan8 = new Sedan(
+                                "Hyundai", "Sonata", "FGH890", 6, 215.0, 2.0, EnumTransmision.AUTOMATICA,
+                                true, 31000.0, 460.0, 2.4, 5, 4, 390, 6, true, true, true, true, true, true, true);
+
+                // Añadir los nuevos vehículos a la lista de espera
+                listaDeEspera.add(van5);
+                listaDeEspera.add(van6);
+                listaDeEspera.add(bus5);
+                listaDeEspera.add(bus6);
+                listaDeEspera.add(moto5);
+                listaDeEspera.add(moto6);
+                listaDeEspera.add(camion5);
+                listaDeEspera.add(camion6);
+                listaDeEspera.add(pickUp8);
+                listaDeEspera.add(sedan8);
                 System.out.println(empleado1.getTransacciones().size());
                 openPrimaryView();
         }

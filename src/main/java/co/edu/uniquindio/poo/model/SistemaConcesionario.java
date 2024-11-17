@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.model;
 
 import java.util.LinkedList;
 import java.util.List;
+
 /**
  * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
  * Fecha: 13/11/2024
@@ -163,14 +164,23 @@ public class SistemaConcesionario {
 
     }
 
-    public LinkedList<Transaccion> obtenerTransaccionesPorEmpleado(Empleado empleado){
+    public LinkedList<Transaccion> obtenerTransaccionesPorEmpleado(Empleado empleado) {
         LinkedList<Transaccion> transaccions = new LinkedList<>();
 
-        for(int i = 0; i < empleado.getTransacciones().size(); i++){
+        for (int i = 0; i < empleado.getTransacciones().size(); i++) {
             transaccions.add(empleado.getTransacciones().get(i));
         }
         return transaccions;
     }
+
+    public LinkedList<Vehiculo> getVehiculosCliente(Cliente clinte){
+        LinkedList<Vehiculo> lista = new LinkedList<>();
+        for(int i = 0;  i < clinte.getVehiculosPertenecientes().size(); i++){
+          lista.add(clinte.getVehiculosPertenecientes().get(i));
+        } return lista;
+            
+     }
+    
 
     /*
      * Metodos Get y Set

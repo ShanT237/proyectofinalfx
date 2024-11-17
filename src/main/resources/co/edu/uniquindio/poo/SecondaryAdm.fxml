@@ -42,7 +42,7 @@
                         <Glow />
                      </effect>
                   </Button>
-                  <Button fx:id="generarReporteButton" alignment="CENTER_RIGHT" layoutX="2.0" layoutY="466.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="250.0" style="-fx-background-color: #26282D;" text="GenerarReporte" textFill="WHITE">
+                  <Button fx:id="generarReporteButton" alignment="CENTER_RIGHT" layoutX="2.0" layoutY="466.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="250.0" style="-fx-background-color: #26282D;" text="Generar Reporte" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -109,7 +109,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="gestionarEmpleadosPane" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="gestionarEmpleadosPane" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <TableView fx:id="paneEmpleadosTablaRegitrados" layoutX="14.0" layoutY="102.0" prefHeight="400.0" prefWidth="450.0">
                      <columns>
@@ -154,7 +154,7 @@
                   <TextField fx:id="empleadoPanePuestoField" layoutX="757.0" layoutY="451.0" prefHeight="25.0" prefWidth="250.0" promptText="Ingrese el puesto" />
                </children>
             </Pane>
-            <Pane fx:id="gestionarVehiculosPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <Pane fx:id="gestionarVehiculosPane" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <TableView fx:id="gestionarVehiculosTablaRegistro" layoutX="14.0" layoutY="101.0" prefHeight="450.0" prefWidth="450.0">
                      <columns>

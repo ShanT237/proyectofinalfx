@@ -30,7 +30,7 @@ public class LoginEmpleadoView {
 
     @FXML
     private Label labelError;
-    
+
     /*
      * Metodo App que conceta las clases entre si
      */

@@ -8,14 +8,14 @@ import java.time.LocalDate;
  * Licencia: GNU GPL V3
  *
  */
-public class TransaccionAlquiler extends Transaccion {
+public class TAlquiler extends Transaccion {
 
     private LocalDate fechaAlquiler;
     private LocalDate fechaDevolucion;
     private double monto;
     private int dias;
 
-    public TransaccionAlquiler(String codigo, int dias) {
+    public TAlquiler(String codigo, int dias) {
         super(codigo);
         this.monto = calcularMontoAlquiler();
         this.dias = dias;

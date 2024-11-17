@@ -63,7 +63,7 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Label alignment="TOP_CENTER" layoutX="92.0" layoutY="95.0" prefHeight="17.0" prefWidth="70.0" text="Label" textFill="#28c6f2">
+                  <Label fx:id="empleadoNombre" alignment="TOP_CENTER" layoutX="92.0" layoutY="95.0" prefHeight="17.0" prefWidth="70.0" text="Label" textFill="#28c6f2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -77,7 +77,7 @@
       </VBox>
       <StackPane layoutX="255.0" layoutY="-1.0" prefHeight="700.0" prefWidth="1045.0">
          <children>
-            <Pane fx:id="registroPane" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="registroPane" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <TableView fx:id="registroPaneTablaTransacciones" layoutX="123.0" layoutY="100.0" prefHeight="450.0" prefWidth="800.0">
                     <columns>
@@ -184,10 +184,11 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane fx:id="gestionarTransaccionesPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <Pane fx:id="gestionarTransaccionesPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <TableView fx:id="tablaTransacciones" layoutX="36.0" layoutY="89.0" prefHeight="450.0" prefWidth="480.0">
                     <columns>
+                        <TableColumn fx:id="transaccionesColumnaTipo" prefWidth="75.0" text="Tipo" />
                       <TableColumn fx:id="transaccionesColumnaCliente" prefWidth="75.0" text="Cliente" />
                       <TableColumn fx:id="transaccionesColumnaVehiculo" prefWidth="75.0" text="Vehiculo" />
                         <TableColumn fx:id="transaccionesColumnaCodigo" prefWidth="75.0" text="Codigo" />
@@ -235,11 +236,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="transaccionActualizarButton" layoutX="687.0" layoutY="616.0" mnemonicParsing="false" text="Actualizar">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
+                  <TextField fx:id="numeroDeDias" layoutX="819.0" layoutY="539.0" prefHeight="25.0" prefWidth="150.0" />
                </children>
             </Pane>
          </children>
