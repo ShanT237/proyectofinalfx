@@ -63,7 +63,7 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Label fx:id="empleadoNombre" alignment="TOP_CENTER" layoutX="92.0" layoutY="95.0" prefHeight="17.0" prefWidth="70.0" text="Label" textFill="#28c6f2">
+                  <Label fx:id="empleadoNombre" alignment="TOP_CENTER" layoutX="57.0" layoutY="95.0" prefHeight="27.0" prefWidth="140.0" text="Label" textFill="#28c6f2">
                      <font>
                         <Font size="18.0" />
                      </font>

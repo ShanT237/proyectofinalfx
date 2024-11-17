@@ -1,6 +1,5 @@
 package co.edu.uniquindio.poo.view;
 
-import java.io.IOException;
 import co.edu.uniquindio.poo.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -3,7 +3,6 @@ package co.edu.uniquindio.poo.view;
 import co.edu.uniquindio.poo.App;
 import co.edu.uniquindio.poo.controller.LoginEmpleadoController;
 import co.edu.uniquindio.poo.model.Empleado;
-import co.edu.uniquindio.poo.model.SistemaConcesionario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

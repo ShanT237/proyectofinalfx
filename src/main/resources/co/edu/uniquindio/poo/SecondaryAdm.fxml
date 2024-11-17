@@ -3,7 +3,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -23,7 +22,7 @@
          <children>
             <AnchorPane prefHeight="701.0" prefWidth="250.0" style="-fx-background-color: #202226;">
                <children>
-                  <Button fx:id="princiipalButton" alignment="CENTER_RIGHT" layoutX="2.0" layoutY="232.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="250.0" style="-fx-background-color: #26282D;" text="Principal" textFill="WHITE">
+                  <Button fx:id="principalButton" alignment="CENTER_RIGHT" layoutX="2.0" layoutY="232.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="250.0" style="-fx-background-color: #26282D;" text="Principal" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -63,7 +62,7 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Label alignment="TOP_CENTER" layoutX="92.0" layoutY="95.0" prefHeight="17.0" prefWidth="70.0" text="Label" textFill="#28c6f2">
+                  <Label alignment="TOP_CENTER" layoutX="92.0" layoutY="95.0" prefHeight="27.0" prefWidth="95.0" text="Santiago" textFill="#28c6f2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -77,7 +76,7 @@
       </VBox>
       <StackPane layoutX="255.0" layoutY="-1.0" prefHeight="700.0" prefWidth="1045.0">
          <children>
-            <Pane fx:id="registroPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <Pane fx:id="transaccionesPane" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <TableView fx:id="principalPaneTablaTransacciones" layoutX="123.0" layoutY="100.0" prefHeight="450.0" prefWidth="800.0">
                      <columns>
@@ -154,98 +153,73 @@
                   <TextField fx:id="empleadoPanePuestoField" layoutX="757.0" layoutY="451.0" prefHeight="25.0" prefWidth="250.0" promptText="Ingrese el puesto" />
                </children>
             </Pane>
-            <Pane fx:id="gestionarVehiculosPane" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="gestionarReportesPane" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
-                  <TableView fx:id="gestionarVehiculosTablaRegistro" layoutX="14.0" layoutY="101.0" prefHeight="450.0" prefWidth="450.0">
+                  <TableView fx:id="reporteTabla" layoutX="23.0" layoutY="74.0" prefHeight="450.0" prefWidth="1000.0">
                      <columns>
-                        <TableColumn fx:id="tablaRegistroTipo" prefWidth="75.0" text="Tipo" />
-                        <TableColumn fx:id="tablaRegistroMatricula" prefWidth="75.0" text="Matricula" />
-                        <TableColumn fx:id="tablaRegistroModelo" prefWidth="75.0" text="Modelo" />
+                        <TableColumn fx:id="reporteColumnaEmpleado" prefWidth="75.0" text="Empleado" />
+                        <TableColumn fx:id="reporteColumnaFecha" prefWidth="75.0" text="Fecha del Reporte" />
+                        <TableColumn fx:id="reporteColumnaCodigo" prefWidth="75.0" text="Codigo" />
+                        <TableColumn fx:id="reporteColumnaTotalVentas" prefWidth="75.0" text="Total Ventas" />
+                        <TableColumn fx:id="reporteColumnaTotalAlquileres" prefWidth="75.0" text="Total Alquileres" />
+                        <TableColumn fx:id="reporteColumnaTotalCompras" prefWidth="75.0" text="Total Compras" />
+                        <TableColumn fx:id="reporteColumnaTotalTransacciones" prefWidth="75.0" text="Total Transacciones" />
+                        <TableColumn fx:id="reporteColumnaTotalMonto" prefWidth="75.0" text="Total Monto" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <TableView fx:id="gestionarVehiculosTablaDeEspera" layoutX="566.0" layoutY="101.0" prefHeight="450.0" prefWidth="450.0">
-                     <columns>
-                        <TableColumn fx:id="tablaDeEsperaTipo" prefWidth="75.0" text="Tipo" />
-                        <TableColumn fx:id="tablaDeEsperaMatricula" prefWidth="75.0" text="Matricula" />
-                        <TableColumn fx:id="tablaDeEsperaModelo" prefWidth="75.0" text="Modelo" />
-                        <TableColumn fx:id="tablaDeEsperaEstado" prefWidth="75.0" text="Es nuevo" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-                  <Button fx:id="gestionarVehiculosEliminarButton" layoutX="213.0" layoutY="604.0" mnemonicParsing="false" text="Eliminar">
+                  <Button fx:id="reporteEliminarButton" layoutX="479.0" layoutY="566.0" mnemonicParsing="false" text="Eliminar">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gestionarVehiculosRegistrarVehiculoButton" layoutX="611.0" layoutY="604.0" mnemonicParsing="false" text="Registrar Vehiculo">
+                  <Button fx:id="reporteCrearButton" layoutX="635.0" layoutY="566.0" mnemonicParsing="false" text="Crear Reporte">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Label fx:id="gestionarVehiculosLabelMatricula" layoutX="881.0" layoutY="615.0" text="Label" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="gestionarTransaccionesPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false">
-               <children>
-                  <TableView fx:id="tablaTransacciones" layoutX="36.0" layoutY="89.0" prefHeight="450.0" prefWidth="480.0">
-                     <columns>
-                        <TableColumn fx:id="transaccionesColumnaCliente" prefWidth="75.0" text="Cliente" />
-                        <TableColumn fx:id="transaccionesColumnaVehiculo" prefWidth="75.0" text="Vehiculo" />
-                        <TableColumn fx:id="transaccionesColumnaCodigo" prefWidth="75.0" text="Codigo" />
-                        <TableColumn fx:id="transaccionesColumnaEmpleado" prefWidth="75.0" text="Empleado" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-                  <TableView fx:id="tablaTransaccionCliente" layoutX="569.0" layoutY="89.0" prefHeight="200.0" prefWidth="400.0">
-                     <columns>
-                        <TableColumn fx:id="nombreClienteTransaccionColumna" prefWidth="75.0" text="Nombre" />
-                        <TableColumn fx:id="idClienteTransaccionColumna" prefWidth="75.0" text="ID" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-                  <TableView fx:id="tablaTransaccionVehiculo" layoutX="569.0" layoutY="339.0" prefHeight="200.0" prefWidth="400.0">
-                     <columns>
-                        <TableColumn fx:id="tipoVehiculoTransaccionColumna" prefWidth="75.0" text="Tipo" />
-                        <TableColumn fx:id="modeloVehiculoTransaccionColumna" prefWidth="75.0" text="Modelo" />
-                        <TableColumn fx:id="matriculaVehiculoTransaccionColumna" prefWidth="75.0" text="Matricula" />
-                        <TableColumn fx:id="disponibleVehiculoTransaccionColumna" prefWidth="75.0" text="Disponible" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-                  <ChoiceBox fx:id="transaccionChoiceBox" layoutX="819.0" layoutY="623.0" prefWidth="150.0" />
-                  <TextField fx:id="transaccionCodigoField" layoutX="819.0" layoutY="577.0" prefHeight="25.0" prefWidth="150.0" />
-                  <Label fx:id="TransaccionLabelMatricula" layoutX="597.0" layoutY="581.0" text="Label" textFill="WHITE">
+                  <Label fx:id="reporteMensajeError" layoutX="905.0" layoutY="657.0" text="Label" textFill="RED">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="transaccionLabelID" layoutX="717.0" layoutY="583.0" text="Label" textFill="WHITE" />
-                  <Button fx:id="transaccionEliminarButton" layoutX="250.0" layoutY="579.0" mnemonicParsing="false" text="Eliminar">
+                  <TextField fx:id="reporteIdEmpleadoTextField" layoutX="821.0" layoutY="578.0" prefHeight="27.0" prefWidth="200.0" promptText="Ingrese el ID del empleado" />
+                  <TextField fx:id="reporteCodigoTextField" layoutX="821.0" layoutY="618.0" prefHeight="27.0" prefWidth="200.0" promptText="Ingrese el codigo" />
+               </children>
+            </Pane>
+            <Pane fx:id="gestionarRegistroPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="paneClientesTablaCRegitrados" layoutX="24.0" layoutY="83.0" prefHeight="470.0" prefWidth="450.0">
+                     <columns>
+                        <TableColumn fx:id="tablaClientesRegistradosNombre" prefWidth="75.0" text="Nombre" />
+                        <TableColumn fx:id="tablaClientesRegistradosID" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="tablaClientesRegistradosEmail" prefWidth="75.0" text="Email" />
+                        <TableColumn fx:id="tablaClientesRegistradosDireccion" prefWidth="75.0" text="Direccion" />
+                        <TableColumn fx:id="tablaClientesRegistradosTelefono" prefWidth="75.0" text="Telefono" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <TableView fx:id="gestionarVehiculosTablaRegistro" layoutX="492.0" layoutY="83.0" prefHeight="470.0" prefWidth="540.0">
+                     <columns>
+                        <TableColumn fx:id="tablaRegistroTipo" prefWidth="75.0" text="Tipo" />
+                        <TableColumn fx:id="tablaRegistroMatricula" prefWidth="75.0" text="Matricula" />
+                        <TableColumn fx:id="tablaRegistroModelo" prefWidth="75.0" text="Modelo" />
+                        <TableColumn fx:id="tablaRegistroDisponible" prefWidth="75.0" text="Disponible" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Button fx:id="eliminarClienteButton" layoutX="178.0" layoutY="592.0" mnemonicParsing="false" text="EliminarCliente">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="transaccionProcesarButton" layoutX="569.0" layoutY="616.0" mnemonicParsing="false" text="Procesar">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="transaccionActualizarButton" layoutX="687.0" layoutY="616.0" mnemonicParsing="false" text="Actualizar">
+                  <Button fx:id="eliminarVehiculoButton" layoutX="684.0" layoutY="601.0" mnemonicParsing="false" text="Eliminar Vehiculo">
                      <font>
                         <Font size="18.0" />
                      </font>

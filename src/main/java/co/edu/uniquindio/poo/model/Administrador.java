@@ -1,7 +1,5 @@
 package co.edu.uniquindio.poo.model;
 
-import java.time.LocalDate;
-import java.util.List;
 
 /**
  * 
@@ -93,13 +91,7 @@ public class Administrador extends Persona implements IGestionar {
         String codigo = "REP-" + (sistemaConcesionario.getReportes().size() + 1);
 
 
-        Reporte nuevoReporte = new Reporte(codigo, LocalDate.now(), empleado);
-
-
-        List<Transaccion> transaccionesEmpleado = sistemaConcesionario.obtenerTransaccionesPorEmpleado(empleado);
-        for (Transaccion transaccion : transaccionesEmpleado) {
-            nuevoReporte.agregarTransaccion(transaccion);
-        }
+        Reporte nuevoReporte = new Reporte(codigo, empleado);
 
 
         sistemaConcesionario.getReportes().add(nuevoReporte);
