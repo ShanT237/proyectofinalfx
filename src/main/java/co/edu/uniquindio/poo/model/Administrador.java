@@ -1,6 +1,5 @@
 package co.edu.uniquindio.poo.model;
 
-
 /**
  * 
  * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
@@ -18,9 +17,7 @@ public class Administrador extends Persona implements IGestionar {
         super(nombre, id, nombreDeUsuario, contraseña, palabraSecreta, email);
         this.telefono = telefono;
     }
-    
 
-    
     @Override
     public void eliminarVehiculo(String matricula) {
         for (Vehiculo vehiculo : sistemaConcesionario.getVehiculos()) {
@@ -85,26 +82,33 @@ public class Administrador extends Persona implements IGestionar {
         System.out.println("Vehículo " + vehiculo.getClass().getSimpleName() + " creado exitosamente");
     }
 
-
-     public void crearReporte(Empleado empleado) {
+    public void crearReporte(Empleado empleado) {
         // Generar un código único para el reporte
         String codigo = "REP-" + (sistemaConcesionario.getReportes().size() + 1);
 
-
         Reporte nuevoReporte = new Reporte(codigo, empleado);
 
-
         sistemaConcesionario.getReportes().add(nuevoReporte);
-
 
         System.out.println("Reporte creado exitosamente:" + nuevoReporte.generarResumen());
     }
 
-    @Override 
-    public void eliminarTransaccion(Transaccion transaccion){
-        if(sistemaConcesionario.getRegistro().eliminarTransaccion(transaccion.getCodigo())){
+    @Override
+    public void eliminarTransaccion(Transaccion transaccion) {
+        if (sistemaConcesionario.getRegistro().eliminarTransaccion(transaccion.getCodigo())) {
 
         }
+    }
+
+    public void eliminarEmpleado(Empleado empleado) {
+        for (Empleado iEmpleado : sistemaConcesionario.getEmpleados()) {
+            if (iEmpleado.getId().equals(empleado.getId())) {
+                sistemaConcesionario.getEmpleados().remove(empleado);
+                System.out.println("Empleado eliminado");
+                return;
+            }
+
+        }  System.out.println("El empleado no pudo ser eliminado");
     }
 
     public String getTelefono() {
