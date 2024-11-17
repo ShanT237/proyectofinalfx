@@ -93,11 +93,26 @@ public class Administrador extends Persona implements IGestionar {
         System.out.println("Reporte creado exitosamente:" + nuevoReporte.generarResumen());
     }
 
+    public void eliminarReporte(Reporte reporte) {
+        sistemaConcesionario.getReportes().remove(reporte);
+
+    }
+
+
+
     @Override
     public void eliminarTransaccion(Transaccion transaccion) {
         if (sistemaConcesionario.getRegistro().eliminarTransaccion(transaccion.getCodigo())) {
 
         }
+    }
+
+    public void crearEmpleado(String nombre, String id, String nombreDeUsuario, String contraseña,
+            String palabraSecreta, String email, String puesto, String telefono) {
+        Empleado nuevoEmpleado = new Empleado(nombre, id, nombreDeUsuario, contraseña, palabraSecreta, email, puesto,
+                telefono);
+        sistemaConcesionario.agregarEmpleado(nuevoEmpleado);
+        System.out.println("Empleado creado exitosamente.");
     }
 
     public void eliminarEmpleado(Empleado empleado) {
@@ -108,7 +123,8 @@ public class Administrador extends Persona implements IGestionar {
                 return;
             }
 
-        }  System.out.println("El empleado no pudo ser eliminado");
+        }
+        System.out.println("El empleado no pudo ser eliminado");
     }
 
     public String getTelefono() {

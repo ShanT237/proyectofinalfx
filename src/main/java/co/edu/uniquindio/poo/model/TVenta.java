@@ -7,6 +7,9 @@ import java.time.LocalDate;
  * Fecha: 13/11/2024
  * Licencia: GNU GPL V3
  *
+ * La clase TVenta representa una transacción de venta de un vehículo.
+ * Extiende la clase Transaccion y maneja los detalles de la venta,
+ * incluyendo la fecha de venta, el cliente, el empleado, y el vehículo.
  */
 public class TVenta extends Transaccion {
 
@@ -17,37 +20,40 @@ public class TVenta extends Transaccion {
     private double monto;
     private SistemaConcesionario sistema;
 
+    /**
+     * Constructor de la clase TVenta.
+     * 
+     * @param codigo el código de la transacción.
+     */
     public TVenta(String codigo) {
         super(codigo);
         this.monto = calcularMontoVenta();
-
     }
 
     /**
-     * Processes a vehicle sale transaction by updating the sale date, client,
-     * employee, and vehicle details.
-     * Marks the vehicle as unavailable and calculates the sale amount. Registers
-     * the transaction in the system
-     * and adds it to the employee's transaction list. Outputs a success message if
-     * the vehicle is available,
-     * otherwise indicates the vehicle is not available for sale.
+     * Procesa una transacción de venta de un vehículo actualizando la fecha de venta,
+     * el cliente, el empleado y los detalles del vehículo.
+     * Marca el vehículo como no disponible y calcula el monto de la venta.
+     * Registra la transacción en el sistema y la añade a la lista de transacciones del empleado.
+     * Muestra un mensaje de éxito si el vehículo está disponible, de lo contrario indica que
+     * el vehículo no está disponible para la venta.
      *
-     * @param cliente  the client involved in the transaction
-     * @param vehiculo the vehicle being sold
-     * @param empleado the employee handling the transaction
+     * @param sistema  el sistema de concesionario donde se registra la transacción.
+     * @param cliente  el cliente involucrado en la transacción.
+     * @param vehiculo el vehículo que se está vendiendo.
+     * @param empleado el empleado que maneja la transacción.
      */
     @Override
-    public void procesar(SistemaConcesionario sitema, Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
-        setSistema(sitema);
+    public void procesar(SistemaConcesionario sistema, Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
+        setSistema(sistema);
         if (vehiculo.isDisponible()) {
             setFechaVenta(LocalDate.now());
             setCliente(cliente);
             setEmpleado(empleado);
             setVehiculo(vehiculo);
-            vehiculo.setDisponible(true);
+            vehiculo.setDisponible(false); // Cambiado a false para marcar como no disponible
             this.monto = calcularMontoVenta();
 
-            this.sistema.agregarVehiculo(vehiculo);
             this.sistema.getRegistro().registrarTransaccion(this);
             this.empleado.getTransacciones().add(this);
 
@@ -58,13 +64,26 @@ public class TVenta extends Transaccion {
         }
     }
 
-   
-
+    /**
+     * Calcula el monto de venta de un vehículo.
+     * 
+     * @return el precio final del vehículo con un margen de ganancia del 15%.
+     *         Retorna 0.0 si el vehículo es nulo.
+     */
     private double calcularMontoVenta() {
+        Vehiculo vehiculo = getVehiculo();
 
-        return 25000.0;
+        if (vehiculo == null) {
+            System.out.println("No se puede calcular el monto de venta: el vehículo es nulo.");
+            return 0.0;
+        }
+
+        double precioBase = vehiculo.getPrecio();
+        double porcentajeGanancia = 0.15;
+        double precioFinal = precioBase * (1 + porcentajeGanancia);
+
+        return precioFinal;
     }
-
 
     public Cliente getCliente() {
         return cliente;
@@ -122,7 +141,4 @@ public class TVenta extends Transaccion {
     public String getTipo() {
         return getClass().getSimpleName();
     }
-
-
-    
 }

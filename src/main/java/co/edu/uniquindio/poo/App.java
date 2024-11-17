@@ -5,15 +5,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
-import co.edu.uniquindio.poo.controller.SecondaryEmpleadoController;
+
+
 import co.edu.uniquindio.poo.model.Administrador;
 import co.edu.uniquindio.poo.model.Bus;
 import co.edu.uniquindio.poo.model.Camion;
@@ -24,7 +24,6 @@ import co.edu.uniquindio.poo.model.Empleado;
 import co.edu.uniquindio.poo.model.EnumCombustible;
 import co.edu.uniquindio.poo.model.EnumTipoCamion;
 import co.edu.uniquindio.poo.model.EnumTransmision;
-import co.edu.uniquindio.poo.model.Transaccion;
 import co.edu.uniquindio.poo.model.Moto;
 import co.edu.uniquindio.poo.model.PickUp;
 import co.edu.uniquindio.poo.model.RegistroTransacciones;
@@ -59,11 +58,12 @@ public class App extends Application {
         private Empleado empleadoAutenticado;
         private LinkedList<Vehiculo> listaDeEspera = new LinkedList<>();
 
+        @SuppressWarnings("exports")
         public Stage getPrimaryStage() {
                 return primaryStage;
         }
 
-        public void setPrimaryStage(Stage primaryStage) {
+        public void setPrimaryStage(@SuppressWarnings("exports") Stage primaryStage) {
                 this.primaryStage = primaryStage;
         }
 
@@ -106,9 +106,11 @@ public class App extends Application {
          * Datos de Inicio
          */
         @Override
-        public void start(Stage primaryStage) throws Exception {
+        public void start(@SuppressWarnings("exports") Stage primaryStage) throws Exception {
                 this.primaryStage = primaryStage;
-                this.primaryStage.setTitle("Sistema de Concesionario");
+                this.primaryStage.setTitle("Sistema Concesionario");
+                Image icono = new Image(getClass().getResourceAsStream("/co/edu/uniquindio/poo/MediaFx/S.png"));
+                primaryStage.getIcons().add(icono);
                 RegistroTransacciones registro = new RegistroTransacciones(LocalDate.now());
 
                 // Crea el Administrador
@@ -239,12 +241,15 @@ public class App extends Application {
                 sistemaConcesionario.agregarCliente(cliente15);
 
                 // Revisiones Tecnicas
+                @SuppressWarnings("unused")
                 RevisionTecnica revision1 = new RevisionTecnica(LocalDate.of(2024, 1, 10), 1, LocalDate.of(2025, 1, 10),
                                 "RT001", true);
+                @SuppressWarnings("unused")
                 RevisionTecnica revision2 = new RevisionTecnica(LocalDate.of(2024, 2, 15), 2, LocalDate.of(2025, 2, 15),
                                 "RT002", true);
                 RevisionTecnica revision3 = new RevisionTecnica(LocalDate.of(2024, 3, 20), 3, LocalDate.of(2025, 3, 20),
                                 "RT003", true);
+                @SuppressWarnings("unused")
                 RevisionTecnica revision4 = new RevisionTecnica(LocalDate.of(2024, 4, 25), 4, LocalDate.of(2025, 4, 25),
                                 "RT004", true);
                 RevisionTecnica revision5 = new RevisionTecnica(LocalDate.of(2024, 5, 30), 5, LocalDate.of(2025, 5, 30),
@@ -646,6 +651,9 @@ public class App extends Application {
                                 "Hyundai", "Sonata", "FGH890", 6, 215.0, 2.0, EnumTransmision.AUTOMATICA,
                                 true, 31000.0, 460.0, 2.4, 5, 4, 390, 6, true, true, true, true, true, true, true);
 
+                adm1.crearReporte(empleado15);
+                adm1.crearReporte(empleado1);
+                adm1.crearReporte(empleado2);
                 // Añadir los nuevos vehículos a la lista de espera
                 listaDeEspera.add(van5);
                 listaDeEspera.add(van6);
@@ -659,6 +667,7 @@ public class App extends Application {
                 listaDeEspera.add(sedan8);
                 System.out.println(empleado1.getTransacciones().size());
                 openPrimaryView();
+
         }
 
         /*
@@ -753,17 +762,21 @@ public class App extends Application {
          */
         public void openSecondaryAdmView() {
                 primaryStage.setResizable(true);
+                primaryStage.close();
                 try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("SecondaryAdm.fxml"));
+
                         Scene scene = new Scene(loader.load());
 
-                        SecondaryAdmView secondaryAdmView = loader.getController();
+                        SecondaryAdmView view = loader.getController();
+                        view.setApp(this);
 
                         primaryStage.setScene(scene);
                         primaryStage.show();
                 } catch (IOException e) {
                         e.printStackTrace();
                 }
+
         }
 
         public static void main(String[] args) {

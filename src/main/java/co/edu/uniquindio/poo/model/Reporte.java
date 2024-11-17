@@ -8,51 +8,113 @@ import java.util.LinkedList;
  * Fecha: 13/11/2024
  * Licencia: GNU GPL V3
  *
+ * La clase Reporte representa un informe generado por un empleado del
+ * concesionario.
+ * El reporte incluye un resumen de las transacciones realizadas por el
+ * empleado,
+ * categorizadas en ventas, alquileres y compras, junto con el monto total de
+ * las transacciones.
  */
 public class Reporte {
+
+    // Fecha en la que se genera el reporte
     private LocalDate fechaDeReporte;
+
+    // Empleado que genera el reporte
     private Empleado empleado;
+
+    // Lista de transacciones realizadas por el empleado
     private LinkedList<Transaccion> transacciones;
+
+    // Código único que identifica el reporte
     private String codigo;
 
+    // Total de ventas realizadas
     private int totalVentas;
+
+    // Total de alquileres realizados
     private int totalAlquileres;
+
+    // Total de compras realizadas
     private int totalCompras;
+
+    // Monto total de todas las transacciones
     private double montoTotal;
 
+    // Total de transacciones realizadas
+    private int totalTransacciones;
+
+    /**
+     * Constructor de la clase Reporte.
+     *
+     * @param codigo   Código único que identifica el reporte.
+     * @param empleado Empleado que genera el reporte.
+     */
     public Reporte(String codigo, Empleado empleado) {
         this.codigo = codigo;
         this.fechaDeReporte = LocalDate.now();
         this.empleado = empleado;
         transacciones = empleado.getTransacciones();
         calcularValores();
-
-
+        totalTransacciones = totalCompras + totalAlquileres + totalVentas;
     }
 
+    /**
+     * Calcula los valores totales de las transacciones realizadas por el empleado.
+     * Actualiza los totales de ventas, alquileres, compras y el monto total.
+     */
     public void calcularValores() {
         for (Transaccion transaccion : transacciones) {
             actualizarTotales(transaccion);
-            
         }
         System.out.println(generarResumen());
     }
 
+    /**
+     * Actualiza los totales de ventas, alquileres, compras y el monto total
+     * basándose en el tipo de transacción.
+     *
+     * @param transaccion Transacción a evaluar y sumar a los totales.
+     */
     private void actualizarTotales(Transaccion transaccion) {
         switch (transaccion.getTipo()) {
-            case "TransaccionVenta":
+            case "TVenta":
                 totalVentas++;
                 break;
-            case "TransaccionAlquiler":
+            case "TAlquiler":
                 totalAlquileres++;
                 break;
-            case "TransaccionCompra":
+            case "TCompra":
                 totalCompras++;
                 break;
         }
         montoTotal += transaccion.getMonto();
     }
 
+    /**
+     * Obtiene el total de transacciones realizadas.
+     *
+     * @return Total de transacciones.
+     */
+    public int getTotalTransacciones() {
+        return totalTransacciones;
+    }
+
+    /**
+     * Establece el total de transacciones realizadas.
+     *
+     * @param totalTransacciones Total de transacciones.
+     */
+    public void setTotalTransacciones(int totalTransacciones) {
+        this.totalTransacciones = totalTransacciones;
+    }
+
+    /**
+     * Genera un resumen del reporte con los totales de ventas, alquileres, compras
+     * y el monto total.
+     *
+     * @return Cadena de texto con el resumen del reporte.
+     */
     public String generarResumen() {
         return "Resumen del Reporte:\n" +
                 "Total Ventas: " + totalVentas + "\n" +

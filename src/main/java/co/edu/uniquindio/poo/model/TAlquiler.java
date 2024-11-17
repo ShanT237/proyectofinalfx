@@ -7,20 +7,50 @@ import java.time.LocalDate;
  * Fecha: 13/11/2024
  * Licencia: GNU GPL V3
  *
+ * La clase TAlquiler representa una transacción de alquiler en el sistema de
+ * concesionario.
+ * Extiende la clase abstracta Transaccion y proporciona la implementación
+ * específica
+ * para procesar un alquiler de vehículo.
  */
 public class TAlquiler extends Transaccion {
 
+    // Fecha en la que se inicia el alquiler
     private LocalDate fechaAlquiler;
+
+    // Fecha en la que se debe devolver el vehículo
     private LocalDate fechaDevolucion;
+
+    // Monto total del alquiler
     private double monto;
+
+    // Número de días que dura el alquiler
     private int dias;
 
+    /**
+     * Constructor de la clase TAlquiler.
+     *
+     * @param codigo Código único que identifica la transacción de alquiler.
+     * @param dias   Número de días que dura el alquiler.
+     */
     public TAlquiler(String codigo, int dias) {
         super(codigo);
-        this.monto = calcularMontoAlquiler();
         this.dias = dias;
+        this.monto = calcularMontoAlquiler();
     }
 
+    /**
+     * Procesa la transacción de alquiler.
+     * 
+     * Si el vehículo está disponible, se actualizan los detalles de la transacción
+     * y se registra en el sistema. Si no está disponible, el alquiler no se
+     * realiza.
+     *
+     * @param sistema  Sistema de concesionario involucrado.
+     * @param cliente  Cliente que alquila el vehículo.
+     * @param vehiculo Vehículo que se alquila.
+     * @param empleado Empleado que procesa la transacción.
+     */
     @Override
     public void procesar(SistemaConcesionario sistema, Cliente cliente, Vehiculo vehiculo, Empleado empleado) {
         setSistema(sistema);
@@ -29,24 +59,41 @@ public class TAlquiler extends Transaccion {
             setEmpleado(empleado);
             setVehiculo(vehiculo);
             setFechaAlquiler(LocalDate.now());
-            setFechaAlquiler(LocalDate.now().plusDays(dias));
+            setFechaDevolucion(LocalDate.now().plusDays(dias));
             vehiculo.setDisponible(false);
             this.monto = calcularMontoAlquiler();
-
             getSistema().getRegistro().registrarTransaccion(this);
             getEmpleado().getTransacciones().add(this);
-
-            System.out.println("Transacción de alquiler procesada exitosamente para el vehículo: "
-                    + vehiculo.getMarca() + " (" + vehiculo.getModelo() + ")");
+            System.out.println("Transacción de alquiler procesada exitosamente para el vehículo: " + vehiculo.getMarca()
+                    + " (" + vehiculo.getModelo() + ")");
         } else {
             System.out.println("El vehículo no está disponible para alquiler.");
         }
     }
 
+    /**
+     * Calcula el monto total del alquiler del vehículo.
+     * 
+     * El cálculo se basa en una tarifa base por día. Si el alquiler es por más de 7
+     * días,
+     * se aplica un descuento del 10%.
+     *
+     * @return Monto total del alquiler.
+     */
     private double calcularMontoAlquiler() {
-        return 100.0;
+        double tarifaBasePorDia = 50.0;
+        double costoTotal = tarifaBasePorDia * dias;
+        if (dias > 7) {
+            costoTotal *= 0.9; // Aplicar un descuento del 10%
+        }
+        return costoTotal;
     }
 
+    /**
+     * Obtiene el tipo de transacción.
+     *
+     * @return Nombre de la clase como tipo de transacción.
+     */
     public String getTipo() {
         return getClass().getSimpleName();
     }

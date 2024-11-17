@@ -15,7 +15,10 @@ public abstract class Vehiculo {
     private RevisionTecnica revisionTecnica;
     private double precio;
     private boolean disponible;
-
+    
+    /*
+     * Contructo Abstracto
+     */
     public Vehiculo(String marca, String modelo, String matricula, int cambios, double velocidadMaxima,
             double cilindraje,
             Enum<EnumTransmision> transmision, boolean esNuevo, double precio) {

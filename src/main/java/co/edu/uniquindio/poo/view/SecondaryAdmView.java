@@ -9,388 +9,530 @@ import co.edu.uniquindio.poo.controller.SecondaryAdmController;
 import co.edu.uniquindio.poo.model.Cliente;
 import co.edu.uniquindio.poo.model.Empleado;
 import co.edu.uniquindio.poo.model.Reporte;
-import co.edu.uniquindio.poo.model.SistemaConcesionario;
 import co.edu.uniquindio.poo.model.Transaccion;
 import co.edu.uniquindio.poo.model.Vehiculo;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
+/**
+ * Autores: Santiago Rodríguez Torres, Oscar Mateo Moreno
+ * Fecha: 13/11/2024
+ * Licencia: GNU GPL V3
+ *
+ */
+
 public class SecondaryAdmView {
 
-    // General Resources
-    @FXML
-    private ResourceBundle resources;
 
-    @FXML
-    private URL location;
+        @FXML
+        private ResourceBundle resources;
 
-    /*
-     * Pane 1: Gestionar las Transacciones del Sistema
-     */
-    @FXML
-    private Pane transaccionesPane;
+        @FXML
+        private URL location;
 
-    @FXML
-    private TableView<?> principalPaneTablaTransacciones;
+        /*
+         * Pane 1: Gestionar las Transacciones del Sistema
+         */
+        @FXML
+        private Pane transaccionesPane;
 
-    @FXML
-    private TableColumn<Transaccion, String> princiaplTablaTransaccionesCliente;
+        @FXML
+        private TableView<Transaccion> principalPaneTablaTransacciones;
 
-    @FXML
-    private TableColumn<Transaccion, String> princiaplTablaTransaccionesCodigo;
+        @FXML
+        private TableColumn<Transaccion, String> princiaplTablaTransaccionesCliente;
 
-    @FXML
-    private TableColumn<Transaccion, String> princiaplTablaTransaccionesEmpleado;
+        @FXML
+        private TableColumn<Transaccion, String> princiaplTablaTransaccionesCodigo;
 
-    @FXML
-    private TableColumn<Transaccion, Double> princiaplTablaTransaccionesMonto;
+        @FXML
+        private TableColumn<Transaccion, String> princiaplTablaTransaccionesEmpleado;
 
-    @FXML
-    private TableColumn<Transaccion, String> princiaplTablaTransaccionesTipo;
+        @FXML
+        private TableColumn<Transaccion, Double> princiaplTablaTransaccionesMonto;
 
-    @FXML
-    private TableColumn<Vehiculo, String> princiaplTablaTransaccionesVehiculo;
+        @FXML
+        private TableColumn<Transaccion, String> princiaplTablaTransaccionesTipo;
 
-    @FXML
-    private Button princiapalEliminarButton;
+        @FXML
+        private TableColumn<Transaccion, String> princiaplTablaTransaccionesVehiculo;
 
-    @FXML
-    private Button princiapalVolverButton;
+        @FXML
+        private Button princiapalEliminarButton;
 
-    @FXML
-    private Label principalNumeroTransaccionesLabel;
+        @FXML
+        private Button princiapalVolverButton;
 
-    /*
-     * Panel 2: Gestion de empleados
-     */
-    @FXML
-    private Pane gestionarEmpleadosPane;
+        @FXML
+        private Label principalNumeroTransaccionesLabel;
 
-    @FXML
-    private TextField empleadoPanEmailField;
+        /*
+         * Panel 2: Gestion de empleados
+         */
+        @FXML
+        private Pane gestionarEmpleadosPane;
 
-    @FXML
-    private TextField empleadoPaneDireccionField;
+        @FXML
+        private TextField empleadoPanEmailField;
 
-    @FXML
-    private TextField empleadoPaneIDField;
+        @FXML
+        private TextField empleadoPaneIDField;
 
-    @FXML
-    private TextField empleadoPaneNombreField;
+        @FXML
+        private TextField empleadoPaneNombreField;
 
-    @FXML
-    private TextField empleadoPanePasswordField;
+        @FXML
+        private TextField empleadoPanePasswordField;
 
-    @FXML
-    private TextField empleadoPanePuestoField;
+        @FXML
+        private TextField empleadoPanePuestoField;
 
-    @FXML
-    private TextField empleadoPaneTelField;
+        @FXML
+        private TextField empleadoPaneTelField;
 
-    @FXML
-    private TextField empleadoPaneUserNameField;
+        @FXML
+        private TextField empleadoPaneUserNameField;
 
-    @FXML
-    private TextField empleadoSecretWordField;
+        @FXML
+        private TextField empleadoSecretWordField;
 
-    @FXML
-    private Button empleadoPaneActualizarButton;
+        @FXML
+        private Button empleadoPaneActualizarButton;
 
-    @FXML
-    private Button empleadoPaneLimpiarCamposButton;
+        @FXML
+        private Button empleadoPaneLimpiarCamposButton;
 
-    @FXML
-    private Button empleadoPaneRegistrarClienteButton;
+        @FXML
+        private Button empleadoPaneRegistrarClienteButton;
 
-    // Tabla de los empleados registrados
+        // Tabla de los empleados registrados
 
-    @FXML
-    private TableView<Empleado> paneEmpleadosTablaRegitrados;
+        @FXML
+        private TableView<Empleado> paneEmpleadosTablaRegitrados;
 
-    @FXML
-    private TableColumn<Empleado, String> tablaEmpleadosRegistradosEmail;
+        @FXML
+        private TableColumn<Empleado, String> tablaEmpleadosRegistradosEmail;
 
-    @FXML
-    private TableColumn<Empleado, String> tablaEmpleadosRegistradosID;
+        @FXML
+        private TableColumn<Empleado, String> tablaEmpleadosRegistradosID;
 
-    @FXML
-    private TableColumn<Empleado, String> tablaEmpleadosRegistradosNombre;
+        @FXML
+        private TableColumn<Empleado, String> tablaEmpleadosRegistradosNombre;
 
-    @FXML
-    private TableColumn<Empleado, String> tablaEmpleadosRegistradosPuesto;
+        @FXML
+        private TableColumn<Empleado, String> tablaEmpleadosRegistradosPuesto;
 
-    @FXML
-    private TableColumn<Empleado, String> tablaEmpleadosRegistradosTelefono;
+        @FXML
+        private TableColumn<Empleado, String> tablaEmpleadosRegistradosTelefono;
 
-    @FXML
-    private Button tablaEmpleadosRegistradosEliminarButton;
+        @FXML
+        private Button tablaEmpleadosRegistradosEliminarButton;
 
-    /*
-     * Pane 3: Crear Reporte respecto al ID del empleado
-     */
+        /*
+         * Pane 3: Crear Reporte respecto al ID del empleado
+         */
 
-    @FXML
-    private Pane gestionarReportesPane;
+        @FXML
+        private Pane gestionarReportesPane;
 
-    @FXML
-    private TextField reporteCodigoTextField;
+        @FXML
+        private TextField reporteIdEmpleadoTextField;
 
-    @FXML
-    private TextField reporteIdEmpleadoTextField;
+        @FXML
+        private TableView<Reporte> reporteTabla;
 
-    @FXML
-    private TableView<?> reporteTabla;
+        @FXML
+        private TableColumn<Reporte, String> reporteColumnaCodigo;
+        @FXML
+        private TableColumn<Reporte, String> reporteColumnaEmpleadoNombre;
 
-    @FXML
-    private TableColumn<Reporte, String> reporteColumnaCodigo;
+        @FXML
+        private TableColumn<Reporte, String> reporteColumnaEmpleado;
 
-    @FXML
-    private TableColumn<Reporte, String> reporteColumnaEmpleado;
+        @FXML
+        private TableColumn<Reporte, LocalDate> reporteColumnaFecha;
 
-    @FXML
-    private TableColumn<Reporte, LocalDate> reporteColumnaFecha;
+        @FXML
+        private TableColumn<Reporte, Integer> reporteColumnaTotalAlquileres;
 
-    @FXML
-    private TableColumn<Reporte, Integer> reporteColumnaTotalAlquileres;
+        @FXML
+        private TableColumn<Reporte, Integer> reporteColumnaTotalCompras;
 
-    @FXML
-    private TableColumn<Reporte, Integer> reporteColumnaTotalCompras;
+        @FXML
+        private TableColumn<Reporte, Double> reporteColumnaTotalMonto;
 
-    @FXML
-    private TableColumn<Reporte, Double> reporteColumnaTotalMonto;
+        @FXML
+        private TableColumn<Reporte, Integer> reporteColumnaTotalTransacciones;
 
-    @FXML
-    private TableColumn<Reporte, Integer> reporteColumnaTotalTransacciones;
+        @FXML
+        private TableColumn<Reporte, Integer> reporteColumnaTotalVentas;
 
-    @FXML
-    private TableColumn<Reporte, Integer> reporteColumnaTotalVentas;
+        @FXML
+        private Button reporteCrearButton;
 
-    @FXML
-    private Button reporteCrearButton;
+        @FXML
+        private Button reporteEliminarButton;
 
-    @FXML
-    private Button reporteEliminarButton;
+        @FXML
+        private Label reporteMensajeError;
 
-    @FXML
-    private Label reporteMensajeError;
+        /*
+         * Pane 4: Tabla Clientes y Vehiculos
+         */
 
-    /*
-     * Pane 4: Tabla Clientes y Vehiculos
-     */
+        @FXML
+        private Pane gestionarRegistroPane;
 
-    @FXML
-    private Pane gestionarRegistroPane;
+        @FXML
+        private TableView<Cliente> paneClientesTablaCRegitrados;
 
-    @FXML
-    private TableView<Cliente> paneClientesTablaCRegitrados;
+        @FXML
+        private TableColumn<Cliente, String> tablaClientesRegistradosDireccion;
 
-    @FXML
-    private TableColumn<Cliente, String> tablaClientesRegistradosDireccion;
+        @FXML
+        private TableColumn<Cliente, String> tablaClientesRegistradosEmail;
 
-    @FXML
-    private TableColumn<Cliente, String> tablaClientesRegistradosEmail;
+        @FXML
+        private TableColumn<Cliente, String> tablaClientesRegistradosID;
 
-    @FXML
-    private TableColumn<Cliente, String> tablaClientesRegistradosID;
+        @FXML
+        private TableColumn<Cliente, String> tablaClientesRegistradosNombre;
 
-    @FXML
-    private TableColumn<Cliente, String> tablaClientesRegistradosNombre;
+        @FXML
+        private TableColumn<Cliente, String> tablaClientesRegistradosTelefono;
 
-    @FXML
-    private TableColumn<Cliente, String> tablaClientesRegistradosTelefono;
+        @FXML
+        private Button eliminarClienteButton;
 
-    @FXML
-    private Button eliminarClienteButton;
+        @FXML
+        private TableView<Vehiculo> gestionarVehiculosTablaRegistro;
 
-    @FXML
-    private TableView<Vehiculo> gestionarVehiculosTablaRegistro;
+        @FXML
+        private TableColumn<Vehiculo, Boolean> tablaRegistroDisponible;
 
-    @FXML
-    private TableColumn<Vehiculo, Boolean> tablaRegistroDisponible;
+        @FXML
+        private TableColumn<Vehiculo, String> tablaRegistroMatricula;
 
-    @FXML
-    private TableColumn<Vehiculo, String> tablaRegistroMatricula;
+        @FXML
+        private TableColumn<Vehiculo, String> tablaRegistroModelo;
 
-    @FXML
-    private TableColumn<Vehiculo, String> tablaRegistroModelo;
+        @FXML
+        private TableColumn<Vehiculo, String> tablaRegistroTipo;
 
-    @FXML
-    private TableColumn<Vehiculo, String> tablaRegistroTipo;
+        @FXML
+        private Button eliminarVehiculoButton;
 
-    @FXML
-    private Button eliminarVehiculoButton;
+        /*
+         * Atributos Generales
+         */
+        @FXML
+        private Button generalButton;
 
-    /*
-     * Atributos Generales
-     */
-    @FXML
-    private Button generalButton;
+        @FXML
+        private Button generarReporteButton;
 
-    @FXML
-    private Button generarReporteButton;
+        @FXML
+        private Button gestionarEmpleadosButton;
 
-    @FXML
-    private Button gestionarEmpleadosButton;
+        @FXML
+        private Button principalButton;
 
-    @FXML
-    private Button principalButton;
+        private App app;
+        private SecondaryAdmController controller;
 
-    private App app;
-    private SecondaryAdmController controller;
 
+    /* Inicializa la vista y configura las tablas y botones */
     @FXML
     void initialize() {
-        //Gestion del las ventanas
+        // Configuración de columnas de tablas para clientes
+        tablaClientesRegistradosNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tablaClientesRegistradosID.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+        tablaClientesRegistradosEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
+        tablaClientesRegistradosDireccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDireccion()));
+        tablaClientesRegistradosTelefono.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
+
+        // Configuración de columnas de tablas para vehículos
+        tablaRegistroMatricula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMatricula()));
+        tablaRegistroModelo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getModelo()));
+        tablaRegistroTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClass().getSimpleName()));
+        tablaRegistroDisponible.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isDisponible()));
+
+        // Configuración de acciones de botones
+        eliminarClienteButton.setOnAction(event -> eliminarCliente());
+        eliminarVehiculoButton.setOnAction(event -> eliminarVehiculo());
+        reporteCrearButton.setOnAction(event -> crearReporte());
+        reporteEliminarButton.setOnAction(event -> eliminarReporte());
+
+        // Configuración de selección de reportes
+        reporteMensajeError.setVisible(false);
+        reporteTabla.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                reporteIdEmpleadoTextField.setText(newValue.getEmpleado().getId());
+            }
+        });
+
+        // Configuración de tablas y botones para empleados
+        configurarTablaEmpleados();
+        tablaEmpleadosRegistradosEliminarButton.setOnAction(event -> eliminarEmpleadoSeleccionado());
+        paneEmpleadosTablaRegitrados.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> manejarSeleccionEmpleado());
+        empleadoPaneLimpiarCamposButton.setOnAction(event -> limpiarCampos());
+        empleadoPaneRegistrarClienteButton.setOnAction(event -> registrarEmpleado());
+        empleadoPaneActualizarButton.setOnAction(event -> actualizarEmpleado());
+
+        // Configuración de tablas y botones para transacciones
+        configurarTablaTransacciones();
+        princiapalEliminarButton.setOnAction(event -> eliminarTransaccionSeleccionada());
+        princiapalVolverButton.setOnAction(event -> volverAVistaAnterior());
+
+        // Configuración de visibilidad de paneles
         gestionarEmpleadosPane.setVisible(false);
         gestionarReportesPane.setVisible(false);
         transaccionesPane.setVisible(true);
         gestionarRegistroPane.setVisible(false);
+
+        // Configuración de botones de navegación
         principalButton.setOnAction(e -> showPanel(transaccionesPane));
         gestionarEmpleadosButton.setOnAction(e -> showPanel(gestionarEmpleadosPane));
         generarReporteButton.setOnAction(e -> showPanel(gestionarReportesPane));
         generalButton.setOnAction(e -> showPanel(gestionarRegistroPane));
-
-        assert transaccionesPane != null
-                : "fx:id=\"TransaccionesPane\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert eliminarClienteButton != null
-                : "fx:id=\"eliminarClienteButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert eliminarVehiculoButton != null
-                : "fx:id=\"eliminarVehiculoButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPanEmailField != null
-                : "fx:id=\"empleadoPanEmailField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPaneActualizarButton != null
-                : "fx:id=\"empleadoPaneActualizarButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPaneDireccionField != null
-                : "fx:id=\"empleadoPaneDireccionField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPaneIDField != null
-                : "fx:id=\"empleadoPaneIDField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPaneLimpiarCamposButton != null
-                : "fx:id=\"empleadoPaneLimpiarCamposButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPaneNombreField != null
-                : "fx:id=\"empleadoPaneNombreField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPanePasswordField != null
-                : "fx:id=\"empleadoPanePasswordField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPanePuestoField != null
-                : "fx:id=\"empleadoPanePuestoField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPaneRegistrarClienteButton != null
-                : "fx:id=\"empleadoPaneRegistrarClienteButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPaneTelField != null
-                : "fx:id=\"empleadoPaneTelField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoPaneUserNameField != null
-                : "fx:id=\"empleadoPaneUserNameField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert empleadoSecretWordField != null
-                : "fx:id=\"empleadoSecretWordField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert generalButton != null
-                : "fx:id=\"generalButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert generarReporteButton != null
-                : "fx:id=\"generarReporteButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert gestionarEmpleadosButton != null
-                : "fx:id=\"gestionarEmpleadosButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert gestionarEmpleadosPane != null
-                : "fx:id=\"gestionarEmpleadosPane\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert gestionarRegistroPane != null
-                : "fx:id=\"gestionarRegistroPane\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert gestionarReportesPane != null
-                : "fx:id=\"gestionarReportesPane\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert gestionarVehiculosTablaRegistro != null
-                : "fx:id=\"gestionarVehiculosTablaRegistro\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert paneClientesTablaCRegitrados != null
-                : "fx:id=\"paneClientesTablaCRegitrados\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert paneEmpleadosTablaRegitrados != null
-                : "fx:id=\"paneEmpleadosTablaRegitrados\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert princiapalEliminarButton != null
-                : "fx:id=\"princiapalEliminarButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert princiapalVolverButton != null
-                : "fx:id=\"princiapalVolverButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert princiaplTablaTransaccionesCliente != null
-                : "fx:id=\"princiaplTablaTransaccionesCliente\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert princiaplTablaTransaccionesCodigo != null
-                : "fx:id=\"princiaplTablaTransaccionesCodigo\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert princiaplTablaTransaccionesEmpleado != null
-                : "fx:id=\"princiaplTablaTransaccionesEmpleado\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert princiaplTablaTransaccionesMonto != null
-                : "fx:id=\"princiaplTablaTransaccionesMonto\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert princiaplTablaTransaccionesTipo != null
-                : "fx:id=\"princiaplTablaTransaccionesTipo\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert princiaplTablaTransaccionesVehiculo != null
-                : "fx:id=\"princiaplTablaTransaccionesVehiculo\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert principalButton != null
-                : "fx:id=\"principalButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert principalNumeroTransaccionesLabel != null
-                : "fx:id=\"principalNumeroTransaccionesLabel\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert principalPaneTablaTransacciones != null
-                : "fx:id=\"principalPaneTablaTransacciones\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteCodigoTextField != null
-                : "fx:id=\"reporteCodigoTextField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteColumnaCodigo != null
-                : "fx:id=\"reporteColumnaCodigo\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteColumnaEmpleado != null
-                : "fx:id=\"reporteColumnaEmpleado\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteColumnaFecha != null
-                : "fx:id=\"reporteColumnaFecha\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteColumnaTotalAlquileres != null
-                : "fx:id=\"reporteColumnaTotalAlquileres\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteColumnaTotalCompras != null
-                : "fx:id=\"reporteColumnaTotalCompras\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteColumnaTotalMonto != null
-                : "fx:id=\"reporteColumnaTotalMonto\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteColumnaTotalTransacciones != null
-                : "fx:id=\"reporteColumnaTotalTransacciones\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteColumnaTotalVentas != null
-                : "fx:id=\"reporteColumnaTotalVentas\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteCrearButton != null
-                : "fx:id=\"reporteCrearButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteEliminarButton != null
-                : "fx:id=\"reporteEliminarButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteIdEmpleadoTextField != null
-                : "fx:id=\"reporteIdEmpleadoTextField\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteMensajeError != null
-                : "fx:id=\"reporteMensajeError\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert reporteTabla != null
-                : "fx:id=\"reporteTabla\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaClientesRegistradosDireccion != null
-                : "fx:id=\"tablaClientesRegistradosDireccion\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaClientesRegistradosEmail != null
-                : "fx:id=\"tablaClientesRegistradosEmail\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaClientesRegistradosID != null
-                : "fx:id=\"tablaClientesRegistradosID\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaClientesRegistradosNombre != null
-                : "fx:id=\"tablaClientesRegistradosNombre\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaClientesRegistradosTelefono != null
-                : "fx:id=\"tablaClientesRegistradosTelefono\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaEmpleadosRegistradosEliminarButton != null
-                : "fx:id=\"tablaEmpleadosRegistradosEliminarButton\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaEmpleadosRegistradosEmail != null
-                : "fx:id=\"tablaEmpleadosRegistradosEmail\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaEmpleadosRegistradosID != null
-                : "fx:id=\"tablaEmpleadosRegistradosID\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaEmpleadosRegistradosNombre != null
-                : "fx:id=\"tablaEmpleadosRegistradosNombre\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaEmpleadosRegistradosPuesto != null
-                : "fx:id=\"tablaEmpleadosRegistradosPuesto\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaEmpleadosRegistradosTelefono != null
-                : "fx:id=\"tablaEmpleadosRegistradosTelefono\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaRegistroDisponible != null
-                : "fx:id=\"tablaRegistroDisponible\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaRegistroMatricula != null
-                : "fx:id=\"tablaRegistroMatricula\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaRegistroModelo != null
-                : "fx:id=\"tablaRegistroModelo\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-        assert tablaRegistroTipo != null
-                : "fx:id=\"tablaRegistroTipo\" was not injected: check your FXML file 'SecondaryAdm.fxml'.";
-
     }
 
+    /* Registra un nuevo empleado en el sistema */
+    private void registrarEmpleado() {
+        Empleado nuevoEmpleado = new Empleado(
+            empleadoPaneNombreField.getText(),
+            empleadoPaneIDField.getText(),
+            empleadoPaneUserNameField.getText(),
+            empleadoPanePasswordField.getText(),
+            empleadoSecretWordField.getText(),
+            empleadoPanEmailField.getText(),
+            empleadoPanePuestoField.getText(),
+            empleadoPaneTelField.getText()
+        );
+        controller.registrarEmpleado(nuevoEmpleado);
+        cargarEmpleadosEnTabla();
+        limpiarCampos();
+        System.out.println("Empleado registrado exitosamente.");
+    }
+
+    /* Crea un nuevo reporte basado en el ID del empleado */
+    @FXML
+    private void crearReporte() {
+        String idEmpleado = reporteIdEmpleadoTextField.getText();
+        if (idEmpleado.isEmpty()) {
+            reporteMensajeError.setText("Por favor, ingrese un ID de empleado.");
+            reporteMensajeError.setVisible(true);
+            return;
+        }
+        controller.crearReporte(idEmpleado);
+        cargarReportesEnTabla();
+        reporteIdEmpleadoTextField.clear();
+        reporteMensajeError.setText("Reporte creado exitosamente.");
+        reporteMensajeError.setVisible(true);
+    }
+
+    /* Elimina el reporte seleccionado */
+    @FXML
+    private void eliminarReporte() {
+        reporteMensajeError.setVisible(true);
+        Reporte reporteSeleccionado = reporteTabla.getSelectionModel().getSelectedItem();
+        if (reporteSeleccionado != null) {
+            controller.eliminarReporte(reporteSeleccionado);
+            cargarReportesEnTabla();
+            reporteMensajeError.setText("Reporte eliminado exitosamente.");
+        } else {
+            reporteMensajeError.setText("Por favor, seleccione un reporte para eliminar.");
+        }
+    }
+
+    /* Carga los clientes en la tabla de clientes */
+    private void cargarClientesEnTabla() {
+        ObservableList<Cliente> clientes = FXCollections.observableArrayList(controller.getSistema().getClientes());
+        paneClientesTablaCRegitrados.setItems(clientes);
+    }
+
+    /* Carga los vehículos en la tabla de vehículos */
+    private void cargarVehiculosEnTabla() {
+        ObservableList<Vehiculo> vehiculos = FXCollections.observableArrayList(controller.getSistema().getVehiculos());
+        gestionarVehiculosTablaRegistro.setItems(vehiculos);
+    }
+
+    /* Actualiza la vista con los datos actuales del sistema */
     public void actualizarVista() {
-
+        ObservableList<Empleado> empleados = FXCollections.observableArrayList(controller.getSistema().getEmpleados());
+        paneEmpleadosTablaRegitrados.setItems(empleados);
+        actualizarTransacciones();
+        actualizarEmpleado();
+        cargarReportesEnTabla();
+        cargarClientesEnTabla();
+        cargarVehiculosEnTabla();
     }
 
+    /* Elimina el cliente seleccionado */
+    private void eliminarCliente() {
+        Cliente clienteSeleccionado = paneClientesTablaCRegitrados.getSelectionModel().getSelectedItem();
+        if (clienteSeleccionado != null) {
+            String idCliente = clienteSeleccionado.getId();
+            controller.eliminarCliente(idCliente);
+            cargarClientesEnTabla();
+        }
+    }
+
+    /* Elimina el vehículo seleccionado */
+    private void eliminarVehiculo() {
+        Vehiculo vehiculoSeleccionado = gestionarVehiculosTablaRegistro.getSelectionModel().getSelectedItem();
+        if (vehiculoSeleccionado != null) {
+            controller.eliminarVehiculo(vehiculoSeleccionado);
+            cargarVehiculosEnTabla();
+        }
+    }
+
+    /* Carga los empleados en la tabla de empleados */
+    private void cargarEmpleadosEnTabla() {
+        ObservableList<Empleado> empleados = FXCollections.observableArrayList(controller.getSistema().getEmpleados());
+        paneEmpleadosTablaRegitrados.setItems(empleados);
+        paneEmpleadosTablaRegitrados.refresh();
+    }
+
+    /* Carga los reportes en la tabla de reportes */
+    @FXML
+    private void cargarReportesEnTabla() {
+        ObservableList<Reporte> reportes = FXCollections.observableArrayList(controller.getSistema().getReportes());
+        reporteTabla.setItems(reportes);
+        reporteColumnaCodigo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCodigo()));
+        reporteColumnaEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado().getId()));
+        reporteColumnaEmpleadoNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado().getNombre()));
+        reporteColumnaFecha.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getFechaDeReporte()));
+        reporteColumnaTotalAlquileres.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getTotalAlquileres()).asObject());
+        reporteColumnaTotalCompras.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getTotalCompras()).asObject());
+        reporteColumnaTotalMonto.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getMontoTotal()).asObject());
+        reporteColumnaTotalTransacciones.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getTotalTransacciones()).asObject());
+        reporteColumnaTotalVentas.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getTotalVentas()).asObject());
+    }
+
+    /* Configura la tabla de transacciones */
+    @FXML
+    private void configurarTablaTransacciones() {
+        princiaplTablaTransaccionesCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCliente().getNombre()));
+        princiaplTablaTransaccionesCodigo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCodigo()));
+        princiaplTablaTransaccionesEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmpleado().getNombre()));
+        princiaplTablaTransaccionesMonto.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getMonto()));
+        princiaplTablaTransaccionesTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipo()));
+        princiaplTablaTransaccionesVehiculo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVehiculo().getMatricula()));
+    }
+
+    /* Maneja la selección de un empleado en la tabla */
+    @FXML
+    private void manejarSeleccionEmpleado() {
+        Empleado empleadoSeleccionado = paneEmpleadosTablaRegitrados.getSelectionModel().getSelectedItem();
+        if (empleadoSeleccionado != null) {
+            empleadoPanEmailField.setText(empleadoSeleccionado.getEmail());
+            empleadoPaneIDField.setText(empleadoSeleccionado.getId());
+            empleadoPaneNombreField.setText(empleadoSeleccionado.getNombre());
+            empleadoPanePasswordField.setText(empleadoSeleccionado.getContraseña());
+            empleadoPanePuestoField.setText(empleadoSeleccionado.getPuesto());
+            empleadoPaneTelField.setText(empleadoSeleccionado.getTelefono());
+            empleadoPaneUserNameField.setText(empleadoSeleccionado.getNombreDeUsuario());
+            empleadoSecretWordField.setText(empleadoSeleccionado.getPalabraSecreta());
+        }
+    }
+
+    /* Configura la tabla de empleados */
+    @FXML
+    private void configurarTablaEmpleados() {
+        tablaEmpleadosRegistradosEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
+        tablaEmpleadosRegistradosID.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+        tablaEmpleadosRegistradosNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tablaEmpleadosRegistradosPuesto.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPuesto()));
+        tablaEmpleadosRegistradosTelefono.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
+    }
+
+    /* Actualiza la tabla de transacciones */
+    @FXML
+    private void actualizarTransacciones() {
+        if (controller.getSistema() != null) {
+            ObservableList<Transaccion> listaTransacciones = FXCollections.observableArrayList(controller.getSistema().getRegistro().getTransacciones());
+            principalPaneTablaTransacciones.setItems(listaTransacciones);
+            int totalTransacciones = listaTransacciones.size();
+            principalNumeroTransaccionesLabel.setText("Total de transacciones: " + totalTransacciones);
+        }
+    }
+
+    /* Actualiza la información del empleado seleccionado */
+    private void actualizarEmpleado() {
+        Empleado empleadoSeleccionado = paneEmpleadosTablaRegitrados.getSelectionModel().getSelectedItem();
+        if (empleadoSeleccionado != null) {
+            empleadoSeleccionado.setNombre(empleadoPaneNombreField.getText());
+            empleadoSeleccionado.setId(empleadoPaneIDField.getText());
+            empleadoSeleccionado.setNombreDeUsuario(empleadoPaneUserNameField.getText());
+            empleadoSeleccionado.setContraseña(empleadoPanePasswordField.getText());
+            empleadoSeleccionado.setPalabraSecreta(empleadoSecretWordField.getText());
+            empleadoSeleccionado.setEmail(empleadoPanEmailField.getText());
+            empleadoSeleccionado.setPuesto(empleadoPanePuestoField.getText());
+            empleadoSeleccionado.setTelefono(empleadoPaneTelField.getText());
+            cargarEmpleadosEnTabla();
+            limpiarCampos();
+            System.out.println("Empleado actualizado exitosamente.");
+        } else {
+            System.out.println("Seleccione un empleado para actualizar.");
+        }
+    }
+
+    /* Elimina la transacción seleccionada */
+    @FXML
+    private void eliminarTransaccionSeleccionada() {
+        Transaccion transaccionSeleccionada = (Transaccion) principalPaneTablaTransacciones.getSelectionModel().getSelectedItem();
+        if (transaccionSeleccionada != null) {
+            controller.getSistema().getRegistro().eliminarTransaccion(transaccionSeleccionada.getCodigo());
+            actualizarTransacciones();
+            System.out.println("Transacción eliminada con éxito.");
+        } else {
+            System.out.println("Seleccione una transacción para eliminar.");
+        }
+    }
+
+    /* Elimina el empleado seleccionado */
+    private void eliminarEmpleadoSeleccionado() {
+        Empleado empleadoSeleccionado = paneEmpleadosTablaRegitrados.getSelectionModel().getSelectedItem();
+        if (empleadoSeleccionado != null) {
+            controller.eliminarEmpleado(empleadoSeleccionado);
+            paneEmpleadosTablaRegitrados.getItems().remove(empleadoSeleccionado);
+            System.out.println("Empleado eliminado: " + empleadoSeleccionado.getId());
+        } else {
+            System.out.println("No se ha seleccionado ningún empleado.");
+        }
+    }
+
+    /* Limpia los campos de entrada del formulario de empleados */
+    private void limpiarCampos() {
+        empleadoPanEmailField.clear();
+        empleadoPaneIDField.clear();
+        empleadoPaneNombreField.clear();
+        empleadoPanePasswordField.clear();
+        empleadoPanePuestoField.clear();
+        empleadoPaneTelField.clear();
+        empleadoPaneUserNameField.clear();
+        empleadoSecretWordField.clear();
+    }
+
+    /* Vuelve a la vista anterior */
+    private void volverAVistaAnterior() {
+        app.openPrimaryView();
+    }
+
+    /* Muestra el panel especificado y oculta los demás */
     private void showPanel(Pane pane) {
         actualizarVista();
         gestionarEmpleadosPane.setVisible(false);
@@ -400,10 +542,10 @@ public class SecondaryAdmView {
         pane.setVisible(true);
     }
 
+    /* Establece la aplicación principal y actualiza la vista */
     public void setApp(App app) {
         this.app = app;
         controller = new SecondaryAdmController(app.getSistemaConcesionario().getAdministrador(), app.getSistemaConcesionario());
         actualizarVista();
     }
-
 }

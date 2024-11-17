@@ -352,7 +352,7 @@ public class SecondaryEmpleadoView {
      */
     public void actualizarVista() {
 
-        empleadoNombre.setText(app.getEmpleadoAutenticado().getNombre());
+        empleadoNombre.setText("!Hola " + app.getEmpleadoAutenticado().getNombre() + "!");
 
 
         tablaTransaccionVehiculo.setItems(controller.obtenerVehiculosRegistrados());
@@ -374,7 +374,7 @@ public class SecondaryEmpleadoView {
         gestionarVehiculosTablaRegistro.setItems(controller.obtenerVehiculosRegistrados());
         gestionarVehiculosTablaRegistro.refresh();
 
-        registroPaneNumeroTransaccionesLabel.setText("Total de Transacciones: " + transaccionesEmpleado.size());
+        registroPaneNumeroTransaccionesLabel.setText("Total de Transacciones Hechas: " + transaccionesEmpleado.size());
 
         transaccionChoiceBox.getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
